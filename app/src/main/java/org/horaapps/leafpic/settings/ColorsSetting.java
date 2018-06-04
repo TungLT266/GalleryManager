@@ -20,11 +20,6 @@ import static org.horaapps.liz.Theme.AMOLED;
 import static org.horaapps.liz.Theme.DARK;
 import static org.horaapps.liz.Theme.LIGHT;
 
-
-/**
- * Created by dnld on 12/9/16.
- */
-
 public class ColorsSetting extends ThemedSetting {
 
     public ColorsSetting(ThemedActivity activity) {
@@ -38,7 +33,7 @@ public class ColorsSetting extends ThemedSetting {
         final TextView dialogTitle = (TextView) dialogLayout.findViewById(R.id.basic_theme_title);
         final CardView dialogCardView = (CardView) dialogLayout.findViewById(R.id.basic_theme_card);
 
-        /** SET OBJ THEME **/
+
         dialogTitle.setBackgroundColor(getActivity().getPrimaryColor());
         dialogCardView.setCardBackgroundColor(getActivity().getCardBackgroundColor());
         dialogBuilder.setView(dialogLayout);

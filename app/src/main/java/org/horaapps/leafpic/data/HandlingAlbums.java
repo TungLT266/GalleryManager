@@ -15,9 +15,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-/**
- * Created by dnld on 27/04/16.
- */
 public class HandlingAlbums extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 12;
@@ -75,7 +72,7 @@ public class HandlingAlbums extends SQLiteOpenHelper {
 
     private void excludeAlbum(SQLiteDatabase db, Album album) {
         changeSatusAlbum(db, album, EXCLUDED);
-        // TODO: 3/26/17 notify
+
     }
 
     public void addFolderToWhiteList(String path) {
@@ -88,7 +85,7 @@ public class HandlingAlbums extends SQLiteOpenHelper {
         ArrayList<String>  list = new ArrayList<>();
         HashSet<File> storageRoots = StorageHelper.getStorageRoots(context);
         for(File file : storageRoots)
-            // it has a lot of garbage
+
             list.add(new File(file.getPath(), "Android").getPath());
 
         list.addAll(getFolders(EXCLUDED));
@@ -127,16 +124,11 @@ public class HandlingAlbums extends SQLiteOpenHelper {
         values.put(ALBUM_STATUS, "");
         if (exist(db, path))
             db.update(TABLE_ALBUMS, values, ALBUM_PATH+"=?", new String[]{ path });
-        // NOTE: it make no difference if the folder was included
-        //excludedFolders.remove(path);
+
         db.close();
     }
 
-    /**
-     *
-     * @param status 1 for EXCLUDED, 2 for INCLUDED
-     * @return
-     */
+
     public ArrayList<String> getFolders(int status) {
         ArrayList<String> list = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();

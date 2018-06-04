@@ -7,9 +7,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-/**
- * Model for showing the Timeline headers.
- */
 public class TimelineHeaderModel implements TimelineItem {
 
     private Calendar calendar;

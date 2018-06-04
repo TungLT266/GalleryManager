@@ -10,15 +10,10 @@ import org.horaapps.liz.ThemedViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by dnld on 01/04/17.
- */
-
 public abstract class BaseAdapter<T, VH extends ThemedViewHolder> extends ThemedAdapter<VH> implements Themed {
 
     private List<T> items;
-    /*    private OnItemClickListener<T> clickListener;
-        private OnItemLongClickListener<T> longClickListener;*/
+
     private Context context;
 
     public BaseAdapter(Context context) {
@@ -37,24 +32,7 @@ public abstract class BaseAdapter<T, VH extends ThemedViewHolder> extends Themed
     }
 
 
-   /* public void setClickListener(OnItemClickListener<T> clickListener) {
-        this.clickListener = clickListener;
-    }
 
-    public void setLongClickListener(OnItemLongClickListener<T> longClickListener) {
-        this.longClickListener = longClickListener;
-    }
-
-    public void onCLick(T itm, @Nullable View parent, int pos) {
-        if (clickListener != null)
-            clickListener.onItemClick(itm, parent, pos);
-    }
-
-    public boolean onLongCLick(T itm, View parent, int pos) {
-        if (longClickListener != null)
-            return longClickListener.onItemLongClick(itm, parent, pos);
-        return false;
-    }*/
 
     public List<T> getItems() {
         return items;

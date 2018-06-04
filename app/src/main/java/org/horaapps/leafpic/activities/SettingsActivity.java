@@ -36,20 +36,7 @@ import butterknife.Unbinder;
 public class SettingsActivity extends ThemedActivity {
     private Toolbar toolbar;
 
-    @BindView(R.id.option_max_brightness) SettingWithSwitchView optionMaxBrightness;
-    @BindView(R.id.option_picture_orientation) SettingWithSwitchView optionOrientation;
-    @BindView(R.id.option_full_resolution) SettingWithSwitchView optionDelayFullRes;
 
-    @BindView(R.id.option_auto_update_media) SettingWithSwitchView optionAutoUpdateMedia;
-    @BindView(R.id.option_include_video) SettingWithSwitchView optionIncludeVideo;
-    @BindView(R.id.option_swipe_direction) SettingWithSwitchView optionSwipeDirection;
-
-    @BindView(R.id.option_fab) SettingWithSwitchView optionShowFab;
-    @BindView(R.id.option_statusbar) SettingWithSwitchView optionStatusbar;
-    @BindView(R.id.option_colored_navbar) SettingWithSwitchView optionColoredNavbar;
-
-    @BindView(R.id.option_sub_scaling) SettingWithSwitchView optionSubScaling;
-    @BindView(R.id.option_disable_animations) SettingWithSwitchView optionDisableAnimations;
 
     private Unbinder unbinder;
 
@@ -74,26 +61,7 @@ public class SettingsActivity extends ThemedActivity {
             }
         });
 
-        optionStatusbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateTheme();
-                setStatusBarColor();
-            }
-        });
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (ViewUtil.hasNavBar(this)) {
-                optionColoredNavbar.setOnClickListener(new View.OnClickListener() {
-                    @SuppressLint("NewApi")
-                    @Override
-                    public void onClick(View view) {
-                        updateTheme();
-                        getWindow().setNavigationBarColor(isNavigationBarColored() ? getPrimaryColor() : ContextCompat.getColor(getApplicationContext(), R.color.md_black_1000));
-                    }
-                });
-            } else optionColoredNavbar.setVisibility(View.GONE);
-        }
         ScrollView scrollView = findViewById(R.id.settingAct_scrollView);
         setScrollViewColor(scrollView);
     }
@@ -212,26 +180,14 @@ public class SettingsActivity extends ThemedActivity {
         }, getAccentColor());
     }
 
-    @OnClick(R.id.ll_custom_icon_color)
-    public void onChangedCustomIconClicked(View view) {
-        updateTheme();
-        updateUiElements();
-    }
 
-    @OnClick(R.id.ll_white_list)
-    public void onWhiteListClicked(View view) {
-        startActivity(new Intent(getApplicationContext(), BlackWhiteListActivity.class));
-    }
 
     @OnClick(R.id.ll_custom_thirdAct)
     public void onCustomThirdActClicked(View view) {
         new SinglePhotoSetting(SettingsActivity.this).show();
     }
 
-    @OnClick(R.id.ll_map_provider)
-    public void onMapProviderClicked(View view) {
-        new MapProviderSetting(SettingsActivity.this).choseProvider();
-    }
+
 
     @OnClick(R.id.ll_n_columns)
     public void onChangeColumnsClicked(View view) {

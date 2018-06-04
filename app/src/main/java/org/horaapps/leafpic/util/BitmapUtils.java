@@ -12,9 +12,6 @@ import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * Created by dnld on 3/25/17.
- */
 
 public class BitmapUtils {
     public static Bitmap addWhiteBorder(Bitmap bmp, int borderSize) {

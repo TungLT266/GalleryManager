@@ -18,9 +18,6 @@ import org.horaapps.leafpic.util.BitmapUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * A Media Fragment for showing an Image (static)
- */
 public class ImageFragment extends BaseMediaFragment {
 
     @BindView(R.id.subsampling_view) SubsamplingScaleImageView imageView;
@@ -52,11 +49,7 @@ public class ImageFragment extends BaseMediaFragment {
         super.onDestroyView();
     }
 
-    /**
-     * Rotate the currently displaying media image.
-     *
-     * @param rotationInDegrees The rotation in degrees
-     */
+
     public void rotatePicture(int rotationInDegrees) {
         if (rotationInDegrees == -90 && imageView.getOrientation() == 0) imageView.setOrientation(SubsamplingScaleImageView.ORIENTATION_270);
         else imageView.setOrientation(Math.abs(imageView.getOrientation() + rotationInDegrees) % 360);

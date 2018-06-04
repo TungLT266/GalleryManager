@@ -21,10 +21,7 @@ import org.horaapps.leafpic.util.StringUtils;
 import java.io.File;
 import java.io.IOException;
 
-// TODO Calvin: Separate out the logic here
-// Ideally, we should have separate data classes for images, videos & gifs
-// Base class can be Media, and others should extend
-// Try to separate out Database logic and projections from this class
+
 public class Media implements TimelineItem, CursorHandler, Parcelable {
 
     private static final String[] sProjection = new String[] {
@@ -165,8 +162,7 @@ public class Media implements TimelineItem, CursorHandler, Parcelable {
         return orientation;
     }
 
-    //<editor-fold desc="Exif & More">
-// TODO remove from here!
+
     @Deprecated
     public Bitmap getBitmap() {
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
@@ -177,14 +173,13 @@ public class Media implements TimelineItem, CursorHandler, Parcelable {
 
     @Deprecated
     public GeoLocation getGeoLocation() {
-        return /*metadata != null ? metadata.getLocation() :*/ null;
+        return  null;
     }
 
     @Deprecated
     public boolean setOrientation(final int orientation) {
         this.orientation = orientation;
-        // TODO: 28/08/16  find a better way
-        // TODO update also content provider
+
         new Thread(new Runnable() {
             public void run() {
                 int exifOrientation = -1;
@@ -225,10 +220,7 @@ public class Media implements TimelineItem, CursorHandler, Parcelable {
 
     @Deprecated
     private long getDateTaken() {
-        /*// TODO: 16/08/16 improved
-        Date dateOriginal = metadata.getDateOriginal();
-        if (dateOriginal != null) return metadata.getDateOriginal().getTime();
-        return -1;*/
+
         return 1;
     }
 
@@ -245,7 +237,7 @@ public class Media implements TimelineItem, CursorHandler, Parcelable {
         return false;
     }
 
-    //</editor-fold>
+
 
     public File getFile() {
         if (path != null) {

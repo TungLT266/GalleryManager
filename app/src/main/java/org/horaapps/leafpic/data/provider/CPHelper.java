@@ -20,11 +20,6 @@ import java.util.ArrayList;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 
-
-/**
- * Created by dnld on 24/07/16.
- */
-
 public class CPHelper {
 
 

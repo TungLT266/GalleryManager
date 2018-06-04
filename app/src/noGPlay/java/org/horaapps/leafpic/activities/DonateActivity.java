@@ -22,9 +22,6 @@ import org.horaapps.leafpic.util.StringUtils;
 import org.horaapps.liz.ThemedActivity;
 import org.horaapps.liz.ui.ThemedIcon;
 
-/**
- * Created by Jibo on 02/03/2016.
- */
 public class DonateActivity extends ThemedActivity {
 
     private Toolbar toolbar;

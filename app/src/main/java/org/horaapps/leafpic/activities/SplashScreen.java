@@ -27,9 +27,6 @@ import org.horaapps.liz.ColorPalette;
 
 import java.io.File;
 
-/**
- * Created by dnld on 01/04/16.
- */
 public class SplashScreen extends SharedMediaActivity {
 
     private final String TAG = SplashScreen.class.getSimpleName();

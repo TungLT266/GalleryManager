@@ -17,9 +17,6 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by dnld on 6/29/17.
- */
 @Deprecated
 public class FolderAdapter extends BaseAdapter<Folder, FolderAdapter.ViewHoldera> {
 

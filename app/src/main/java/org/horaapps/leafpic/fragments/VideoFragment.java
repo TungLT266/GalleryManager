@@ -23,9 +23,6 @@ import org.horaapps.liz.ui.ThemedIcon;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * A Media Fragment for showing a Video Preview.
- */
 public class VideoFragment extends BaseMediaFragment {
 
     @BindView(R.id.media_view) ImageView previewView;
@@ -54,8 +51,8 @@ public class VideoFragment extends BaseMediaFragment {
             startActivity(intent);
         });
 
-        // TODO: See where we can move this. Seems like boilerplate code that belongs in
-        // a utility class or Builder of some sort.
+
+
         RequestOptions options =
                 new RequestOptions().signature(media.getSignature()).centerCrop()
                         .diskCacheStrategy(

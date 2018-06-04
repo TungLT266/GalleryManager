@@ -7,9 +7,6 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
-/**
- * Created by dnld on 11/03/16.
- */
 public class Measure {
 
     public static final String TAG = "Measure";
@@ -38,17 +35,17 @@ public class Measure {
         Point appUsableSize = getAppUsableScreenSize(context);
         Point realScreenSize = getRealScreenSize(context);
 
-        // navigation bar on the right
+
         if (appUsableSize.x < realScreenSize.x) {
             return new Point(realScreenSize.x - appUsableSize.x, appUsableSize.y);
         }
 
-        // navigation bar at the bottom
+
         if (appUsableSize.y < realScreenSize.y) {
             return new Point(appUsableSize.x, realScreenSize.y - appUsableSize.y);
         }
 
-        // navigation bar is not present
+
         return new Point();
     }
 
@@ -69,10 +66,8 @@ public class Measure {
     }
 
     public static int rotateBy(int current, int degrees) {
-        // TODO: 21/08/16 a better way should exist
-    /*int rotation = current + degrees;
-    if (rotation > 359) rotation -=360;
-    if (rotation < 0) rotation +=360;*/
+
+
         return (current + degrees) % 360;
     }
 }

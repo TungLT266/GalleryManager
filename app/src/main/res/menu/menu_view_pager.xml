@@ -29,24 +29,24 @@
                     android:title="@string/rotate_180" />
             </menu>
         </item>
-        <item
-            android:id="@+id/action_palette"
-            android:title="@string/palette"
-            app:showAsAction="never"
-            android:orderInCategory="3"
-            />
+        <!--<item-->
+            <!--android:id="@+id/action_palette"-->
+            <!--android:title="@string/palette"-->
+            <!--app:showAsAction="never"-->
+            <!--android:orderInCategory="3"-->
+            <!--/>-->
         <item
             android:id="@+id/action_use_as"
             android:title="@string/use_as"
             android:orderInCategory="8"
             app:showAsAction="never"
             />
-        <item
-            android:id="@+id/action_print"
-            android:orderInCategory="10"
-            android:title="@string/print"
-            app:showAsAction="never"
-            />
+        <!--<item-->
+            <!--android:id="@+id/action_print"-->
+            <!--android:orderInCategory="10"-->
+            <!--android:title="@string/print"-->
+            <!--app:showAsAction="never"-->
+            <!--/>-->
     </group>
 
     <group android:id="@+id/on_internal_storage">

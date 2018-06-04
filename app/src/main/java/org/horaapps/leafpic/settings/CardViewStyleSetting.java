@@ -28,11 +28,6 @@ import static org.horaapps.leafpic.CardViewStyle.COMPACT;
 import static org.horaapps.leafpic.CardViewStyle.FLAT;
 import static org.horaapps.leafpic.CardViewStyle.MATERIAL;
 
-
-/**
- * Created by dnld on 12/9/16.
- */
-
 public class CardViewStyleSetting extends ThemedSetting {
 
     public CardViewStyleSetting(ThemedActivity activity) {

@@ -142,7 +142,7 @@ public class AffixActivity extends Activity implements OnClickListener {
                 Bitmap.Config.ARGB_4444);
 
         try {
-            // Load up the image's dimensions not the image itself
+
             BitmapFactory.Options bmpFactoryOptions = new BitmapFactory.Options();
             bmpFactoryOptions.inJustDecodeBounds = true;
             returnBmp = BitmapFactory.decodeStream(getContentResolver()
@@ -154,20 +154,19 @@ public class AffixActivity extends Activity implements OnClickListener {
             Log.v("HEIGHTRATIO", "" + heightRatio);
             Log.v("WIDTHRATIO", "" + widthRatio);
 
-            // If both of the ratios are greater than 1, one of the sides of the
-            // image is greater than the screen
+
             if (heightRatio > 1 && widthRatio > 1) {
                 if (heightRatio > widthRatio) {
-                    // Height ratio is larger, scale according to it
+
                     bmpFactoryOptions.inSampleSize = heightRatio;
                 } else {
-                    // Width ratio is larger, scale according to it
+
                     bmpFactoryOptions.inSampleSize = widthRatio;
                 }
             }
 
 
-            // Decode it for real
+
             bmpFactoryOptions.inJustDecodeBounds = false;
             returnBmp = BitmapFactory.decodeStream(getContentResolver()
                     .openInputStream(imageFileUri), null, bmpFactoryOptions);

@@ -9,10 +9,6 @@ import org.horaapps.liz.ThemedAdapter;
 
 import java.util.ArrayList;
 
-/**
- * Created by dnld on 04/03/18.
- */
-
 public class ContributorsAdapter extends ThemedAdapter<ContributorViewHolder> {
 
     private ContactListener listener;

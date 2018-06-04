@@ -9,9 +9,6 @@ import org.horaapps.leafpic.data.Media;
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ThemedFragment;
 
-/**
- * A Base Fragment for showing Media.
- */
 public abstract class BaseMediaFragment extends ThemedFragment {
 
     private static final String ARGS_MEDIA = "args_media";
@@ -49,7 +46,7 @@ public abstract class BaseMediaFragment extends ThemedFragment {
 
     @Override
     public void refreshTheme(ThemeHelper themeHelper) {
-        // Default implementation
+
     }
 
     protected void setTapListener(@NonNull View view) {
@@ -60,14 +57,10 @@ public abstract class BaseMediaFragment extends ThemedFragment {
         mediaTapListener.onViewTapped();
     }
 
-    /**
-     * Interface for listeners to react on Media Clicks.
-     */
+
     public interface MediaTapListener {
 
-        /**
-         * Called when user taps on the Media view.
-         */
+
         void onViewTapped();
     }
 }

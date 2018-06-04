@@ -53,14 +53,14 @@
                     android:id="@+id/size_sort_mode"
                     android:title="@string/size"
                     app:showAsAction="never" />
-                <item
-                    android:id="@+id/type_sort_action"
-                    android:title="@string/type"
-                    app:showAsAction="never" />
-                <item
-                    android:id="@+id/numeric_sort_mode"
-                    android:title="@string/numeric"
-                    app:showAsAction="never" />
+                <!--<item-->
+                    <!--android:id="@+id/type_sort_action"-->
+                    <!--android:title="@string/type"-->
+                    <!--app:showAsAction="never" />-->
+                <!--<item-->
+                    <!--android:id="@+id/numeric_sort_mode"-->
+                    <!--android:title="@string/numeric"-->
+                    <!--app:showAsAction="never" />-->
             </group>
             <group android:checkableBehavior="all">
                 <item
@@ -81,11 +81,11 @@
             android:title="@string/delete"
             app:showAsAction="ifRoom" />
 
-        <item
-            android:id="@+id/affix"
-            android:title="@string/affix"
-            android:visible="false"
-            app:showAsAction="never" />
+        <!--<item-->
+            <!--android:id="@+id/affix"-->
+            <!--android:title="@string/affix"-->
+            <!--android:visible="false"-->
+            <!--app:showAsAction="never" />-->
 
         <item
             android:id="@+id/action_copy"
@@ -100,17 +100,17 @@
 
     <group android:id="@+id/one_selected_items">
 
-        <item
-            android:id="@+id/action_palette"
-            android:title="@string/palette"
-            android:visible="false"
-            app:showAsAction="never" />
+        <!--<item-->
+            <!--android:id="@+id/action_palette"-->
+            <!--android:title="@string/palette"-->
+            <!--android:visible="false"-->
+            <!--app:showAsAction="never" />-->
 
-        <item
-            android:id="@+id/set_as_cover"
-            android:title="@string/set_preview"
-            android:visible="false"
-            app:showAsAction="never" />
+        <!--<item-->
+            <!--android:id="@+id/set_as_cover"-->
+            <!--android:title="@string/set_preview"-->
+            <!--android:visible="false"-->
+            <!--app:showAsAction="never" />-->
 
         <item
             android:id="@+id/rename"

@@ -2,10 +2,6 @@ package org.horaapps.leafpic.settings;
 
 import org.horaapps.liz.ThemedActivity;
 
-/**
- * Created by dnld on 12/9/16.
- */
-
 class ThemedSetting {
 
     private ThemedActivity activity;

@@ -22,9 +22,6 @@ import org.horaapps.liz.ui.ThemedIcon;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by darken (darken@darken.eu) on 04.03.2017.
- */
 public class SettingWithSwitchView extends FrameLayout implements View.OnClickListener, Themed {
     private final String iconString;
     private final String preferenceKey;
@@ -62,7 +59,7 @@ public class SettingWithSwitchView extends FrameLayout implements View.OnClickLi
         titleRes = a.getResourceId(R.styleable.SettingWithSwitchView_settingTitle, 0);
         captionRes = a.getResourceId(R.styleable.SettingWithSwitchView_settingCaption, 0);
         defaultValue = a.getBoolean(R.styleable.SettingWithSwitchView_settingDefaultValue, false);
-        int minimumApi = 0;//a.getInteger(R.styleable.SettingWithSwitchView_settingMinApi, 0);
+        int minimumApi = 0;
         a.recycle();
 
         if (Build.VERSION.SDK_INT < minimumApi) setVisibility(GONE);
@@ -78,10 +75,7 @@ public class SettingWithSwitchView extends FrameLayout implements View.OnClickLi
         toggle.setChecked(isChecked());
         super.setOnClickListener(this);
 
-        /*
-        setPadding((int) getResources().getDimension(R.dimen.medium_spacing), 0,(int) getResources().getDimension(R.dimen.medium_spacing), 0);
-        setMinimumHeight((int) getResources().getDimension(R.dimen.listitem_height_twoline));
-        */
+
         super.onFinishInflate();
     }
 

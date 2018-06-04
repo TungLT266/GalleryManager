@@ -7,10 +7,6 @@ import org.horaapps.leafpic.SecretConstants;
 // needed for Local.US
 import java.util.Locale;
 
-/**
- * Created by dnld on 04/09/16.
- */
-
 public enum StaticMapProvider {
 
   GOOGLE_MAPS(0), MAP_BOX(1), MAP_BOX_DARK(2), MAP_BOX_LIGHT(3), TYLER(4);
@@ -23,8 +19,7 @@ public enum StaticMapProvider {
 
   public int getValue() { return value;}
 
-// String.format is locale dependent, we need to force a locale with point instead of comma in decimals,
-// otherwise (at least) mapbox does not work in some countries
+
   public String getUrl(GeoLocation location) {
     if (value>=1 && value <=3) //MAP_MOX invert coordinates
       return String.format(Locale.US, getUrl(value), location.getLongitude(), location.getLatitude());

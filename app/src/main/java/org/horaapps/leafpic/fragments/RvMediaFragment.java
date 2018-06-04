@@ -74,10 +74,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import jp.wasabeef.recyclerview.animators.LandingAnimator;
 
-/**
- * Created by dnld on 3/13/17.
- */
-
 public class RvMediaFragment extends BaseFragment {
 
     public static final String TAG = "RvMediaFragment";
@@ -279,7 +275,7 @@ public class RvMediaFragment extends BaseFragment {
                 case SIZE:  menu.findItem(R.id.size_sort_mode).setChecked(true); break;
                 case DATE: default:
                     menu.findItem(R.id.date_taken_sort_mode).setChecked(true); break;
-                case NUMERIC:  menu.findItem(R.id.numeric_sort_mode).setChecked(true); break;
+
             }
         }
 
@@ -376,9 +372,9 @@ public class RvMediaFragment extends BaseFragment {
                         boolean b = MediaHelper.renameMedia(getActivity(), adapter.getFirstSelected(), editTextNewName.getText().toString());
                         if (!b) {
                             StringUtils.showToast(getActivity(), getString(R.string.rename_error));
-                            //adapter.notifyDataSetChanged();
+
                         } else
-                            adapter.clearSelected(); // Deselect media if rename successful
+                            adapter.clearSelected();
                     } else
                         StringUtils.showToast(getActivity(), getString(R.string.nothing_changed));
                 });
@@ -413,12 +409,7 @@ public class RvMediaFragment extends BaseFragment {
                 item.setChecked(true);
                 return true;
 
-            case R.id.numeric_sort_mode:
-                adapter.changeSortingMode(SortingMode.NUMERIC);
-                HandlingAlbums.getInstance(getContext()).setSortingMode(album.getPath(), SortingMode.NUMERIC.getValue());
-                album.setSortingMode(SortingMode.NUMERIC);
-                item.setChecked(true);
-                return true;
+
 
             case R.id.ascending_sort_order:
                 item.setChecked(!item.isChecked());
@@ -432,11 +423,10 @@ public class RvMediaFragment extends BaseFragment {
                 showDeleteBottomSheet();
                 return true;
 
-            //region Affix
-            // TODO: 11/21/16 move away from here
+
             case R.id.affix:
 
-                //region Async MediaAffix
+
                 class affixMedia extends AsyncTask<Affix.Options, Integer, Void> {
                     private AlertDialog dialog;
 
@@ -472,7 +462,7 @@ public class RvMediaFragment extends BaseFragment {
                         dialog.dismiss();
                     }
                 }
-                //endregion
+
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), getDialogStyle());
                 final View dialogLayout = getLayoutInflater().inflate(R.layout.dialog_affix, null);
@@ -480,7 +470,7 @@ public class RvMediaFragment extends BaseFragment {
                 dialogLayout.findViewById(R.id.affix_title).setBackgroundColor(getPrimaryColor());
                 ((CardView) dialogLayout.findViewById(R.id.affix_card)).setCardBackgroundColor(getCardBackgroundColor());
 
-                //ITEMS
+
                 final SwitchCompat swVertical = dialogLayout.findViewById(R.id.affix_vertical_switch);
                 final SwitchCompat swSaveHere = dialogLayout.findViewById(R.id.save_here_switch);
 
@@ -492,49 +482,47 @@ public class RvMediaFragment extends BaseFragment {
                 final TextView txtQuality = dialogLayout.findViewById(R.id.affix_quality_title);
                 final SeekBar seekQuality = dialogLayout.findViewById(R.id.seek_bar_quality);
 
-                //region Example
+
                 final LinearLayout llExample = dialogLayout.findViewById(R.id.affix_example);
                 llExample.setBackgroundColor(getBackgroundColor());
                 llExample.setVisibility(Prefs.getToggleValue(getContext().getString(R.string.preference_show_tips), true) ? View.VISIBLE : View.GONE);
                 final LinearLayout llExampleH = dialogLayout.findViewById(R.id.affix_example_horizontal);
-                //llExampleH.setBackgroundColor(getCardBackgroundColor());
+
                 final LinearLayout llExampleV = dialogLayout.findViewById(R.id.affix_example_vertical);
-                //llExampleV.setBackgroundColor(getCardBackgroundColor());
 
 
-                //endregion
 
-                //region THEME STUFF
+
                 getThemeHelper().setScrollViewColor(dialogLayout.findViewById(R.id.affix_scrollView));
 
-                /** TextViews **/
+
                 int color = getTextColor();
                 ((TextView) dialogLayout.findViewById(R.id.affix_vertical_title)).setTextColor(color);
                 ((TextView) dialogLayout.findViewById(R.id.compression_settings_title)).setTextColor(color);
                 ((TextView) dialogLayout.findViewById(R.id.save_here_title)).setTextColor(color);
 
-                //Example Stuff
+
                 ((TextView) dialogLayout.findViewById(R.id.affix_example_horizontal_txt1)).setTextColor(color);
                 ((TextView) dialogLayout.findViewById(R.id.affix_example_horizontal_txt2)).setTextColor(color);
                 ((TextView) dialogLayout.findViewById(R.id.affix_example_vertical_txt1)).setTextColor(color);
                 ((TextView) dialogLayout.findViewById(R.id.affix_example_vertical_txt2)).setTextColor(color);
 
 
-                /** Sub TextViews **/
+
                 color = getThemeHelper().getSubTextColor();
                 ((TextView) dialogLayout.findViewById(R.id.save_here_sub)).setTextColor(color);
                 ((TextView) dialogLayout.findViewById(R.id.affix_vertical_sub)).setTextColor(color);
                 ((TextView) dialogLayout.findViewById(R.id.affix_format_sub)).setTextColor(color);
                 txtQuality.setTextColor(color);
 
-                /** Icons **/
+
                 color = getIconColor();
                 ((ThemedIcon) dialogLayout.findViewById(R.id.affix_quality_icon)).setColor(color);
                 ((ThemedIcon) dialogLayout.findViewById(R.id.affix_format_icon)).setColor(color);
                 ((ThemedIcon) dialogLayout.findViewById(R.id.affix_vertical_icon)).setColor(color);
                 ((ThemedIcon) dialogLayout.findViewById(R.id.save_here_icon)).setColor(color);
 
-                //Example bg
+
                 color = getCardBackgroundColor();
                 dialogLayout.findViewById(R.id.affix_example_horizontal_txt1).setBackgroundColor(color);
                 dialogLayout.findViewById(R.id.affix_example_horizontal_txt2).setBackgroundColor(color);
@@ -549,7 +537,7 @@ public class RvMediaFragment extends BaseFragment {
                 getThemeHelper().themeRadioButton(dialogLayout.findViewById(R.id.radio_webp));
                 getThemeHelper().setSwitchCompactColor( swSaveHere, getAccentColor());
                 getThemeHelper().setSwitchCompactColor( swVertical, getAccentColor());
-                //#endregion
+
 
                 seekQuality.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
@@ -617,7 +605,7 @@ public class RvMediaFragment extends BaseFragment {
                 builder.setNegativeButton(this.getString(R.string.cancel).toUpperCase(), null);
                 builder.show();
                 return true;
-            //endregion
+
         }
 
         return super.onOptionsItemSelected(item);

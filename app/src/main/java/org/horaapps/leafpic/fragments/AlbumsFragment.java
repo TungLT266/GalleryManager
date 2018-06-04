@@ -53,10 +53,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import jp.wasabeef.recyclerview.animators.LandingAnimator;
 
-/**
- * Created by dnld on 3/13/17.
- */
-
 public class AlbumsFragment extends BaseFragment {
 
     public static final String TAG = "AlbumsFragment";
@@ -238,7 +234,7 @@ public class AlbumsFragment extends BaseFragment {
                 case SIZE:  menu.findItem(R.id.size_sort_mode).setChecked(true); break;
                 case DATE: default:
                     menu.findItem(R.id.date_taken_sort_mode).setChecked(true); break;
-                case NUMERIC:  menu.findItem(R.id.numeric_sort_mode).setChecked(true); break;
+
             }
         }
 
@@ -278,7 +274,7 @@ public class AlbumsFragment extends BaseFragment {
                     db().setCover(selectedAlbum.getPath(), null);
                     adapter.clearSelected();
                     adapter.notifyItemChanaged(selectedAlbum);
-                    // TODO: 4/5/17 updateui
+
                     return true;
                 }
 
@@ -293,10 +289,10 @@ public class AlbumsFragment extends BaseFragment {
                     ArrayList<String> hiddenPaths = AlbumsHelper.getLastHiddenPaths();
 
                     for (Album album : adapter.getSelectedAlbums()) {
-                        if (hidden) { // unhide
+                        if (hidden) { // k ẩn
                             AlbumsHelper.unHideAlbum(album.getPath(), getContext());
                             hiddenPaths.remove(album.getPath());
-                        } else { // hide
+                        } else { // ẩn
                             AlbumsHelper.hideAlbum(album.getPath(), getContext());
                             hiddenPaths.add(album.getPath());
                         }
@@ -342,11 +338,7 @@ public class AlbumsFragment extends BaseFragment {
                 item.setChecked(true);
                 return true;
 
-            case R.id.numeric_sort_mode:
-                adapter.changeSortingMode(SortingMode.NUMERIC);
-                AlbumsHelper.setSortingMode(SortingMode.NUMERIC);
-                item.setChecked(true);
-                return true;
+
 
             case R.id.ascending_sort_order:
                 item.setChecked(!item.isChecked());
@@ -403,57 +395,7 @@ public class AlbumsFragment extends BaseFragment {
                 return true;
 
             case R.id.delete:
-               /* class DeleteAlbums extends AsyncTask<String, Integer, Boolean> {
 
-                    //private AlertDialog dialog;
-                    List<Album> selectedAlbums;
-                    DeleteAlbumsDialog newFragment;
-
-
-                    @Override
-                    protected void onPreExecute() {
-                        super.onPreExecute();
-                        newFragment = new DeleteAlbumsDialog();
-                        Bundle b = new Bundle();
-                        b.putParcelableArrayList("albums", ((ArrayList<Album>) adapter.getSelectedAlbums()));
-
-                        newFragment.setArguments(b);
-                        newFragment.show(getFragmentManager(), "dialog");
-                        //newFragment.setTitle("asd");
-
-                        //dialog = AlertDialogsHelper.getProgressDialog(((ThemedActivity) getActivity()), getString(R.string.delete), getString(R.string.deleting_images));
-                        //dialog.show();
-
-
-                    }
-
-                    @Override
-                    protected Boolean doInBackground(String... arg0) {
-
-                        return true;
-                    }
-
-                    @Override
-                    protected void onPostExecute(Boolean result) {
-                        *//*if (result) {
-                            if (albumsMode) {
-                                albumsAdapter.clearSelected();
-                                //albumsAdapter.notifyDataSetChanged();
-                            } else {
-                                if (getAlbum().getMedia().size() == 0) {
-                                    getAlbums().removeCurrentAlbum();
-                                    albumsAdapter.notifyDataSetChanged();
-                                    displayAlbums();
-                                } else
-                                    oldMediaAdapter.swapDataSet(getAlbum().getMedia());
-                            }
-                        } else requestSdCardPermissions();
-
-                        supportInvalidateOptionsMenu();
-                        checkNothing();
-                        dialog.dismiss();*//*
-                    }
-                }*/
 
 
                 final AlertDialog alertDialog = AlertDialogsHelper.getTextDialog(((ThemedActivity) getActivity()), R.string.delete, R.string.delete_album_message);
@@ -466,7 +408,7 @@ public class AlbumsFragment extends BaseFragment {
                         Security.authenticateUser(((ThemedActivity) getActivity()), new Security.AuthCallBack() {
                             @Override
                             public void onAuthenticated() {
-                                /*new DeleteAlbums().execute();*/
+
                             }
 
                             @Override
@@ -474,7 +416,7 @@ public class AlbumsFragment extends BaseFragment {
                                 Toast.makeText(getContext(), R.string.wrong_password, Toast.LENGTH_SHORT).show();
                             }
                         });
-                    }/* else new DeleteAlbums().execute();*/
+                    }
                 });
                 alertDialog.show();
                 return true;

@@ -18,9 +18,6 @@ import org.horaapps.liz.ui.ThemedIcon;
 
 import uz.shift.colorpicker.LineColorPicker;
 
-/**
- * Created by dnld on 12/9/16.
- */
 
 public class SinglePhotoSetting extends ThemedSetting {
 
@@ -55,7 +52,7 @@ public class SinglePhotoSetting extends ThemedSetting {
         transparencyColorPicker.setColors(ColorPalette.getTransparencyShadows(getActivity().getPrimaryColor()));
         transparencyColorPicker.setSelectedColor(ColorPalette.getTransparentColor(getActivity().getPrimaryColor(), 255 - Hawk.get(getActivity().getString(R.string.preference_transparency), 0)));
 
-        /**TEXT VIEWS**/
+
         ((TextView) dialogLayout.findViewById(R.id.seek_bar_alpha_title)).setTextColor(getActivity().getTextColor());
         ((TextView) dialogLayout.findViewById(R.id.seek_bar_alpha_title_Sub)).setTextColor(getActivity().getSubTextColor());
 

@@ -12,9 +12,6 @@ import com.squareup.leakcanary.LeakCanary;
 import org.horaapps.leafpic.util.ApplicationUtils;
 import org.horaapps.leafpic.util.preferences.Prefs;
 
-/**
- * Created by dnld on 28/04/16.
- */
 public class App extends Application {
 
     private static App mInstance;
@@ -27,8 +24,7 @@ public class App extends Application {
         ApplicationUtils.init(this);
 
         if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
+
             return;
         }
         LeakCanary.install(this);

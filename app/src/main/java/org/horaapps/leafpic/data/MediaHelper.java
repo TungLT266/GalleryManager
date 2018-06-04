@@ -12,10 +12,6 @@ import java.io.File;
 
 import io.reactivex.Observable;
 
-/**
- * Created by dnld on 8/8/17.
- */
-
 public class MediaHelper {
     private static Uri external = MediaStore.Files.getContentUri("external");
 

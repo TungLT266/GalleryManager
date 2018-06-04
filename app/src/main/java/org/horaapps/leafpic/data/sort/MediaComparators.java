@@ -9,10 +9,6 @@ import org.horaapps.leafpic.util.NumericComparator;
 
 import java.util.Comparator;
 
-/**
- * Created by dnld on 26/04/16.
- */
-
 public class MediaComparators {
 
     public static Comparator<Media> getComparator(AlbumSettings settings) {

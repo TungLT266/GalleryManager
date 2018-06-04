@@ -1,9 +1,5 @@
 package org.horaapps.leafpic.about;
 
-/**
- * Created by dnld on 04/03/18.
- */
-
 public class Contact {
     private String value;
     private String label;

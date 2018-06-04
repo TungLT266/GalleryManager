@@ -1,8 +1,5 @@
 package org.horaapps.leafpic.util;
 
-/**
- * Storage for server constants - specifically Web URLs
- */
 public class ServerConstants {
 
     // GitHub URLs

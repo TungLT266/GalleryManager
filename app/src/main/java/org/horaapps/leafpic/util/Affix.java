@@ -14,9 +14,6 @@ import java.util.ArrayList;
 
 import static org.horaapps.leafpic.data.MediaHelper.scanFile;
 
-/**
- * Created by Jibo on 09/05/2016.
- */
 public class Affix {
 
     private static final String DIRECTORY_NAME = "AffixedPictures";
@@ -112,9 +109,7 @@ public class Affix {
 
     public static class Options {
 
-        /**
-         * Specifies the known formats a bitmap can be compressed into
-         */
+
 
         private String folderPath = null;
         private Bitmap.CompressFormat format = Bitmap.CompressFormat.JPEG;

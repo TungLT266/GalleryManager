@@ -28,9 +28,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * Custom view for showing a Developer on About screen.
- */
 public class AboutCreator extends RelativeLayout implements Themed {
 
     @BindView(R.id.developer_header_image) ImageView headerImage;
@@ -70,9 +67,7 @@ public class AboutCreator extends RelativeLayout implements Themed {
         alignProfileImageWithHeader();
     }
 
-    /**
-     * Set the listener to be invoked when Profile links are tapped.
-     */
+
     public void setupListeners(ContactListener listener, String mail, ArrayList<Contact> contacts) {
 
         devContacts.removeAllViews();
@@ -101,7 +96,7 @@ public class AboutCreator extends RelativeLayout implements Themed {
                 int profileImageSize = profileImage.getMeasuredHeight();
                 int headerImageHeight = headerImage.getMeasuredHeight();
 
-                // Set the profile image to align with bottom of header
+
                 LayoutParams layoutParams = (LayoutParams) profileImage.getLayoutParams();
                 layoutParams.topMargin = headerImageHeight - (int) (0.5f * profileImageSize);
                 profileImage.setLayoutParams(layoutParams);

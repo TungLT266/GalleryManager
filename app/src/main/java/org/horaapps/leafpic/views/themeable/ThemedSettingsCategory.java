@@ -7,9 +7,6 @@ import android.util.AttributeSet;
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.Themed;
 
-/**
- * Created by darken (darken@darken.eu) on 04.03.2017.
- */
 public class ThemedSettingsCategory extends android.support.v7.widget.AppCompatTextView implements Themed {
     public ThemedSettingsCategory(Context context) {
         this(context, null);

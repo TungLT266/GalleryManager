@@ -15,9 +15,6 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by dnld on 1/3/16.
- */
 public class StringUtils {
 
 
@@ -32,7 +29,7 @@ public class StringUtils {
         return fi.substring(0, fi.lastIndexOf('.'));
     }
 
-    @SuppressWarnings("deprecation")
+
     public static Spanned html(String s) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
             return Html.fromHtml(s, Html.FROM_HTML_MODE_LEGACY);
@@ -138,13 +135,7 @@ public class StringUtils {
                 color, content);
     }
 
-    /**
-     * Returns a user-readable date formatted.
-     * eg: Sunday, 31 December 2017
-     *
-     * @param date The date object
-     * @return A user-readable date string.
-     */
+
     public static String getUserReadableDate(@NonNull Date date) {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("E, d MMM yyyy", Locale.getDefault());
         return dateFormatter.format(date);

@@ -27,9 +27,6 @@ import org.horaapps.liz.ThemedActivity;
 
 import java.util.List;
 
-/**
- * Created by Jibo on 02/03/2016.
- */
 public class PaletteActivity extends ThemedActivity {
 
     private Toolbar toolbar;
@@ -92,7 +89,7 @@ public class PaletteActivity extends ThemedActivity {
         rvPalette.setAdapter(paletteAdapter);
     }
 
-    /*** - PALETTE ADAPTER - ***/
+
     private class PaletteAdapter extends RecyclerView.Adapter<PaletteActivity.PaletteAdapter.ViewHolder> {
 
         private List<Palette.Swatch> swatches;
@@ -125,7 +122,7 @@ public class PaletteActivity extends ThemedActivity {
         }
     }
 
-    /*** - PALETTE ITEM ON CLICK - ***/
+
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

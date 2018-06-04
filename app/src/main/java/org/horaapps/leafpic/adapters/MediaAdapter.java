@@ -39,11 +39,6 @@ import java.util.stream.Collectors;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Adapter used to display Media Items.
- *
- * TODO: This class needs a major cleanup. Remove code from onBindViewHolder!
- */
 public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
 
     private final ArrayList<Media> media;
@@ -196,11 +191,7 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
             holder.icon.setVisibility(View.VISIBLE);
             holder.path.setVisibility(View.VISIBLE);
             holder.path.setText(f.getName());
-            /*holder.path.setTextColor(ContextCompat.getColor(holder.path.getContext(), R.color.md_dark_primary_text));
-            holder.path.setBackgroundColor(
-                    ColorPalette.getTransparentColor(
-                            ContextCompat.getColor(holder.path.getContext(), R.color.md_black_1000), 100));*/
-            //ANIMS
+
             holder.icon.animate().alpha(1).setDuration(250);
             holder.path.animate().alpha(1).setDuration(250);
         } else {
@@ -216,7 +207,7 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
             holder.icon.setVisibility(View.VISIBLE);
             holder.imageView.setColorFilter(0x88000000, PorterDuff.Mode.SRC_ATOP);
             holder.layout.setPadding(15, 15, 15, 15);
-            //ANIMS
+
             holder.icon.animate().alpha(1).setDuration(250);
         } else {
             holder.imageView.clearColorFilter();
@@ -233,7 +224,7 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
 
         holder.layout.setOnLongClickListener(v -> {
             if (!selecting()) {
-                // If it is the first long press
+
                 notifySelected(f.toggleSelected());
                 notifyItemChanged(holder.getAdapterPosition());
             } else {
@@ -255,7 +246,7 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
         this.media.remove(i);
         notifyItemRemoved(i);
 
-//        this.notifySelected(false);
+
     }
 
     public void invalidateSelectedCount() {
@@ -275,23 +266,18 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
     @Override
     public void refreshTheme(ThemeHelper theme) {
         placeholder = theme.getPlaceHolder();
-        //super.refreshTheme(theme);
+
     }
 
 
-    /**
-     * On longpress, it finds the last or the first selected image before or after the targetIndex
-     * and selects them all.
-     *
-     * @param
-     */
+
     public void selectAllUpTo(Media m) {
         int targetIndex = media.indexOf(m);
 
         int indexRightBeforeOrAfter = -1;
         int indexNow;
 
-        // TODO: 4/5/17 rewrite?
+
         for (Media sm : getSelected()) {
             indexNow = media.indexOf(sm);
             if (indexRightBeforeOrAfter == -1) indexRightBeforeOrAfter = indexNow;
@@ -337,9 +323,9 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
         if (i < 0) i = ~i;
         media.add(i, album);
 
-        //notifyItemRangeInserted(0, media.size()-1);
+
         notifyItemInserted(i);
-        //notifyDataSetChanged();
+
         return i;
     }
 

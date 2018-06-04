@@ -22,9 +22,7 @@ import org.horaapps.liz.ui.ThemedIcon;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Items to show in the Navigation Drawer
- */
+
 public class NavigationEntry extends LinearLayout {
 
     @BindView(R.id.navigation_item_icon) ThemedIcon navIcon;
@@ -49,20 +47,12 @@ public class NavigationEntry extends LinearLayout {
         init(context, attrs);
     }
 
-    /**
-     * Sets the icon color for theming.
-     *
-     * @param colorRes The color integer resource.
-     */
+
     public void setIconColor(@ColorInt int colorRes) {
         navIcon.setColor(colorRes);
     }
 
-    /**
-     * Sets the text color for theming.
-     *
-     * @param colorRes The color integer resource.
-     */
+
     public void setTextColor(@ColorInt int colorRes) {
         navText.setTextColor(colorRes);
     }

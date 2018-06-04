@@ -15,10 +15,6 @@ import org.horaapps.leafpic.util.StringUtils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by dnld on 4/10/17.
- */
-
 public class MetadataHelper {
 
     public MediaDetailsMap<String, String> getMainDetails(Context context, Media m){
@@ -27,7 +23,7 @@ public class MetadataHelper {
         details.put(context.getString(R.string.type), m.getMimeType());
         if(m.getSize() != -1)
             details.put(context.getString(R.string.size), StringUtils.humanReadableByteCount(m.getSize(), true));
-        // TODO should i add this always?
+
         details.put(context.getString(R.string.orientation), m.getOrientation() + "");
         MetaDataItem metadata = MetaDataItem.getMetadata(context, m.getUri());
         details.put(context.getString(R.string.resolution), metadata.getResolution());

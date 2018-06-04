@@ -10,10 +10,6 @@ import org.horaapps.leafpic.R;
 import org.horaapps.leafpic.data.StorageHelper;
 import org.horaapps.leafpic.util.AlertDialogsHelper;
 
-/**
- * Created by dnld on 03/08/16.
- */
-
 public abstract class SharedMediaActivity extends BaseActivity {
 
     private int REQUEST_CODE_SD_CARD_PERMISSIONS = 42;
@@ -35,7 +31,7 @@ public abstract class SharedMediaActivity extends BaseActivity {
         if (resultCode == RESULT_OK) {
             if (requestCode == REQUEST_CODE_SD_CARD_PERMISSIONS) {
                 Uri treeUri = resultData.getData();
-                // Persist URI in shared preference so that you can use it later.
+
                 StorageHelper.saveSdCardInfo(getApplicationContext(), treeUri);
                 getContentResolver().takePersistableUriPermission(treeUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                 Toast.makeText(this, R.string.got_permission_wr_sdcard, Toast.LENGTH_SHORT).show();

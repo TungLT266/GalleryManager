@@ -6,9 +6,6 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-/**
- * Created by dnld on 09/05/16.
- */
 public class SquareRelativeLayout extends RelativeLayout {
 
     public SquareRelativeLayout(Context context) {
@@ -30,7 +27,7 @@ public class SquareRelativeLayout extends RelativeLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        // Set a square layout.
+
         super.onMeasure(widthMeasureSpec, widthMeasureSpec);
     }
 

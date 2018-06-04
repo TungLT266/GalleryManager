@@ -32,10 +32,10 @@
                         android:id="@+id/size_sort_mode"
                         android:title="@string/size"
                         app:showAsAction="never" />
-                    <item
-                        android:id="@+id/numeric_sort_mode"
-                        android:title="@string/numeric"
-                        app:showAsAction="never" />
+                    <!--<item-->
+                        <!--android:id="@+id/numeric_sort_mode"-->
+                        <!--android:title="@string/numeric"-->
+                        <!--app:showAsAction="never" />-->
                 </group>
                 <group android:checkableBehavior="all">
                     <item
@@ -53,10 +53,10 @@
             android:title="@string/delete"
             app:showAsAction="ifRoom" />
 
-        <item
-            android:id="@+id/exclude"
-            android:title="@string/exclude"
-            app:showAsAction="never" />
+        <!--<item-->
+            <!--android:id="@+id/exclude"-->
+            <!--android:title="@string/exclude"-->
+            <!--app:showAsAction="never" />-->
 
         <item
             android:id="@+id/shortcut"

@@ -36,9 +36,6 @@ import jp.wasabeef.recyclerview.animators.LandingAnimator;
 
 import static org.horaapps.leafpic.data.MediaHelper.scanFile;
 
-/**
- * Created by dnld on 01/04/16.
- */
 public class BlackWhiteListActivity extends SharedMediaActivity {
 
     public static final String EXTRA_TYPE = "typeExcluded";
@@ -103,7 +100,7 @@ public class BlackWhiteListActivity extends SharedMediaActivity {
             checkNothing();
         } else {
             Toast.makeText(getApplicationContext(), R.string.no_media_in_this_folder, Toast.LENGTH_SHORT).show();
-            // TODO: 12/26/16 should i add or not?
+
         }
     }
 
@@ -174,7 +171,7 @@ public class BlackWhiteListActivity extends SharedMediaActivity {
         setRecentApp(getTitle().toString());
         ((CardView) findViewById(R.id.white_list_decription_card)).setCardBackgroundColor(getCardBackgroundColor());
         ((TextView) findViewById(R.id.white_list_decription_txt)).setTextColor(getTextColor());
-        //TODO: EMOJI EASTER EGG - THERE'S NOTHING TO SHOW
+
         ((TextView) findViewById(R.id.emoji_easter_egg)).setTextColor(getSubTextColor());
         ((TextView) findViewById(R.id.nothing_to_show_text_emoji_easter_egg)).setTextColor(getSubTextColor());
 

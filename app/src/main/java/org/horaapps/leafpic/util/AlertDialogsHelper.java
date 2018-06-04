@@ -45,9 +45,6 @@ import in.uncod.android.bypass.Bypass;
 
 import static org.horaapps.leafpic.util.ServerConstants.LEAFPIC_CHANGELOG;
 
-/**
- * Created by dnld on 19/05/16.
- */
 public class AlertDialogsHelper {
 
     public static  AlertDialog getInsertTextDialog(ThemedActivity activity, EditText editText, @StringRes int title) {

@@ -4,10 +4,6 @@ import android.support.annotation.DrawableRes;
 
 import java.util.ArrayList;
 
-/**
- * Created by dnld on 04/03/18.
- */
-
 public class Contributor {
     private String name;
     private String description;

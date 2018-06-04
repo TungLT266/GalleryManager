@@ -25,9 +25,6 @@ import org.horaapps.liz.ui.ThemedIcon;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Class for holding the RecyclerView ViewHolders to be used in Timeline.
- */
 public class ViewHolder {
 
     static abstract class TimelineViewHolder extends ThemedViewHolder {
@@ -37,9 +34,7 @@ public class ViewHolder {
         }
     }
 
-    /**
-     * ViewHolder for the Timeline headers
-     */
+
     protected static class TimelineHeaderViewHolder extends TimelineViewHolder {
 
         @BindView(R.id.timeline_container_header) TextView headerText;
@@ -59,9 +54,7 @@ public class ViewHolder {
         }
     }
 
-    /**
-     * ViewHolder for the Media items.
-     */
+
     protected static class TimelineMediaViewHolder extends TimelineViewHolder {
 
         @BindView(R.id.photo_preview) ImageView imageView;
@@ -84,7 +77,7 @@ public class ViewHolder {
         }
 
         void bind(@NonNull Media mediaItem) {
-            // TODO: Refactor this logic!
+
             icon.setVisibility(View.GONE);
             gifIcon.setVisibility(mediaItem.isGif() ? View.VISIBLE : View.GONE);
 
@@ -120,7 +113,7 @@ public class ViewHolder {
                 icon.setVisibility(View.VISIBLE);
                 imageView.setColorFilter(0x88000000, PorterDuff.Mode.SRC_ATOP);
                 layout.setPadding(15, 15, 15, 15);
-                //ANIMS
+
                 icon.animate().alpha(1).setDuration(250);
             } else {
                 imageView.clearColorFilter();

@@ -33,15 +33,10 @@ import org.horaapps.liz.ThemeHelper;
 import java.util.Formatter;
 import java.util.Locale;
 
-/**
- * Created by dnld on 12/6/16.
- */
-
 public class CustomPlayBackController extends FrameLayout {
 
     public interface VisibilityListener {
-        //Called when the visibility changes.
-        //@param visibility The new visibility. Either {@link View#VISIBLE} or {@link View#GONE}.
+
         void onVisibilityChange(int visibility);
     }
 
@@ -128,7 +123,7 @@ public class CustomPlayBackController extends FrameLayout {
         fastForwardButton = findViewById(R.id.ffwd);
         fastForwardButton.setOnClickListener(componentListener);
 
-        /**** THEMING THINGS ****/
+
         ThemeHelper themeHelper = ThemeHelper.getInstanceLoaded(getContext());
 
         progressBar.getProgressDrawable().setColorFilter(new PorterDuffColorFilter(themeHelper.isPrimaryEqualAccent()
@@ -185,12 +180,12 @@ public class CustomPlayBackController extends FrameLayout {
             }
             updateAll();
         }
-        // Call hideAfterTimeout even if already visible to reset the timeout.
+
         hideAfterTimeout();
     }
 
 
-    //Hides the controller.
+
     public void hide() {
         if (isVisible()) {
             setVisibility(GONE);
@@ -204,7 +199,7 @@ public class CustomPlayBackController extends FrameLayout {
     }
 
 
-    //Returns whether the controller is currently visible.
+
     public boolean isVisible() {
         return getVisibility() == VISIBLE;
     }
@@ -236,9 +231,9 @@ public class CustomPlayBackController extends FrameLayout {
                 playing ? R.string.exo_controls_pause_description : R.string.exo_controls_play_description);
         playButton.setContentDescription(contentDescription);
         IconicsDrawable icon = playButton.getIcon();
-        //icon.icon(playing ? CommunityMaterial.Icon.cmd_pause : CommunityMaterial.Icon.cmd_play);
+
         icon.icon(playing ? FontAwesome.Icon.faw_pause : FontAwesome.Icon.faw_play);
-        //icon.icon(FontAwesome.Icon.faw_pause);
+
         playButton.setIcon(icon);
     }
 
@@ -259,7 +254,7 @@ public class CustomPlayBackController extends FrameLayout {
                     || player.getPreviousWindowIndex() != C.INDEX_UNSET;
             enableNext = window.isDynamic || player.getNextWindowIndex() != C.INDEX_UNSET;
         }
-        // TODO: 12/16/17  
+
         setButtonEnabled(enablePrevious && false, previousButton, true);
         setButtonEnabled(enableNext && false, nextButton, true);
 
@@ -281,9 +276,9 @@ public class CustomPlayBackController extends FrameLayout {
         }
         long bufferedPosition = player == null ? 0 : player.getBufferedPosition();
         progressBar.setSecondaryProgress(progressBarValue(bufferedPosition));
-        // Remove scheduled updates.
+
         removeCallbacks(updateProgressAction);
-        // Schedule an update if necessary.
+
         int playbackState = player == null ? Player.STATE_IDLE : player.getPlaybackState();
         if (playbackState != Player.STATE_IDLE && playbackState != Player.STATE_ENDED) {
             long delayMs;
@@ -459,11 +454,7 @@ public class CustomPlayBackController extends FrameLayout {
 
         }
 
-       /* @Override
-        public void onPositionDiscontinuity() {
-            updateNavigation();
-            updateProgress();
-        }*/
+
 
         @Override
         public void onTimelineChanged(Timeline timeline, Object manifest) {
@@ -478,12 +469,12 @@ public class CustomPlayBackController extends FrameLayout {
 
         @Override
         public void onLoadingChanged(boolean isLoading) {
-            // Do nothing.
+
         }
 
         @Override
         public void onPlayerError(ExoPlaybackException error) {
-            // Do nothing.
+
         }
 
         @Override

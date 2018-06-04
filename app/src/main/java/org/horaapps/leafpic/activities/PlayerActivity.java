@@ -1,18 +1,4 @@
-/*
- * Copyright (C) 2016 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 package org.horaapps.leafpic.activities;
 
 import android.animation.ArgbEvaluator;
@@ -209,11 +195,11 @@ public class PlayerActivity extends ThemedActivity implements CustomPlayBackCont
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
-        // See whether the player view wants to handle media or DPAD keys events.
+
         return simpleExoPlayerView.dispatchKeyEvent(event) || super.dispatchKeyEvent(event);
     }
 
-    // Internal methods
+
     private void initializePlayer() {
         Intent intent = getIntent();
         boolean needNewPlayer = player == null;
@@ -360,9 +346,7 @@ public class PlayerActivity extends ThemedActivity implements CustomPlayBackCont
         @Override
         public void onPositionDiscontinuity(@Player.DiscontinuityReason int reason) {
             if (inErrorState) {
-                // This will only occur if the user has performed a seek whilst in the error state. Update
-                // the resume position so that if the user then retries, playback will resume from the
-                // position to which they seeked.
+
                 updateResumePosition();
             }
         }
@@ -373,7 +357,7 @@ public class PlayerActivity extends ThemedActivity implements CustomPlayBackCont
             if (e.type == ExoPlaybackException.TYPE_RENDERER) {
                 Exception cause = e.getRendererException();
                 if (cause instanceof DecoderInitializationException) {
-                    // Special case for decoder initialization failures.
+
                     DecoderInitializationException decoderInitializationException =
                             (DecoderInitializationException) cause;
                     if (decoderInitializationException.decoderName == null)
@@ -395,7 +379,7 @@ public class PlayerActivity extends ThemedActivity implements CustomPlayBackCont
         }
 
         @Override
-        @SuppressWarnings("ReferenceEquality")
+
         public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
             if (trackGroups != lastSeenTrackGroupArray) {
                 MappedTrackInfo mappedTrackInfo = trackSelector.getCurrentMappedTrackInfo();
@@ -417,7 +401,7 @@ public class PlayerActivity extends ThemedActivity implements CustomPlayBackCont
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(org.horaapps.leafpic.R.menu.menu_video_player, menu);
 
         MappedTrackInfo mappedTrackInfo = trackSelector.getCurrentMappedTrackInfo();
@@ -503,7 +487,7 @@ public class PlayerActivity extends ThemedActivity implements CustomPlayBackCont
         }
     }
 
-    //User controls
+
     private void showToast(int messageId) {
         showToast(getString(messageId));
     }
@@ -512,7 +496,7 @@ public class PlayerActivity extends ThemedActivity implements CustomPlayBackCont
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
-    /**** THEMING STUFF ****/
+
 
     @CallSuper
     @Override
@@ -539,8 +523,8 @@ public class PlayerActivity extends ThemedActivity implements CustomPlayBackCont
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                             | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hideController nav bar
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN // hideController status bar
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE);
             toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(new AccelerateInterpolator())
                     .setDuration(200).start();
@@ -552,7 +536,7 @@ public class PlayerActivity extends ThemedActivity implements CustomPlayBackCont
     private void showControls(){
         runOnUiThread(() -> {
             int rotation = (((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay()).getRotation();
-            if (rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270) { //Landscape
+            if (rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270) {
                 getWindow().getDecorView().setSystemUiVisibility(
                         View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                                 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);

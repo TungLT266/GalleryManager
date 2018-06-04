@@ -2,9 +2,6 @@ package org.horaapps.leafpic.util.file;
 
 import org.horaapps.leafpic.data.Media;
 
-/**
- * Created by dnld on 9/19/17.
- */
 public class DeleteException extends Exception {
 
     Media media;

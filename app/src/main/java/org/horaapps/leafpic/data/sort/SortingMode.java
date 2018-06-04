@@ -2,10 +2,6 @@ package org.horaapps.leafpic.data.sort;
 
 import android.provider.MediaStore;
 
-/**
- * Created by dnld on 18/08/16.
- */
-
 public enum SortingMode {
   NAME (0, MediaStore.MediaColumns.DISPLAY_NAME, MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME),
   DATE (1, MediaStore.MediaColumns.DATE_MODIFIED, "max(" + MediaStore.Images.Media.DATE_MODIFIED + ")"),

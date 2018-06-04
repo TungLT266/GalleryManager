@@ -6,9 +6,6 @@ import android.view.VelocityTracker;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 
-/**
- * Created by dnld on 20/09/16.
- */
 
 public class ZoomImageView {
   private boolean draggingDown = false;

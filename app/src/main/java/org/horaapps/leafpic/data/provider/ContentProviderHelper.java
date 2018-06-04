@@ -8,10 +8,6 @@ import org.horaapps.leafpic.data.Album;
 
 import java.io.File;
 
-/**
- * Created by dnld on 24/07/16.
- */
-
 @Deprecated
 public class ContentProviderHelper {
 

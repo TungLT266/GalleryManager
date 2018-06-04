@@ -26,10 +26,6 @@ import static org.horaapps.leafpic.data.MediaHelper.scanFile;
 import static org.horaapps.leafpic.util.BitmapUtils.addWhiteBorder;
 import static org.horaapps.leafpic.util.BitmapUtils.getCroppedBitmap;
 
-/**
- * Created by dnld on 3/25/17.
- */
-
 public class AlbumsHelper {
 
     public static void createShortcuts(Context context, List<Album> albums) {
@@ -54,7 +50,7 @@ public class AlbumsHelper {
 
             if (bitmap == null) {
                 Toast.makeText(context, R.string.error_thumbnail, Toast.LENGTH_SHORT).show();
-                // TODO: 12/31/16
+
                 return;
             }
 

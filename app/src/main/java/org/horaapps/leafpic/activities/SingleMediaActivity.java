@@ -81,10 +81,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-/**
- * Created by dnld on 18/02/16.
- */
-@SuppressWarnings("ResourceAsColor")
+
 public class SingleMediaActivity extends SharedMediaActivity implements BaseMediaFragment.MediaTapListener {
 
     private static final String TAG = SingleMediaActivity.class.getSimpleName();
@@ -151,11 +148,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
             }
         }
 
-        /*if (action != null && action.equals(ACTION_OPEN_ALBUM)) {
-            loadAlbum(getIntent());
-        } else if (getIntent().getData() != null) {
 
-        }*/
 
         if (savedInstanceState != null) {
             mViewPager.setLocked(savedInstanceState.getBoolean(ISLOCKED_ARG, false));
@@ -173,7 +166,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
 
     private void loadAlbumsLazy(Intent intent) {
         album = intent.getParcelableExtra(EXTRA_ARGS_ALBUM);
-        //position = intent.getIntExtra(EXTRA_ARGS_POSITION, 0);
+
         Media m = intent.getParcelableExtra(EXTRA_ARGS_MEDIA);
         media = new ArrayList<>();
         media.add(m);
@@ -217,18 +210,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
         album = new Album(uri.toString(), uri.getPath());
         album.settings = AlbumSettings.getDefaults();
 
-        /*
-        String path = StorageHelper.getMediaPath(getApplicationContext(), getIntent().getData());
-                Album album = null;
 
-                if (path != null) {
-                    album = ContentProviderHelper.getAlbumFromMedia(getApplicationContext(), path);
-                    if (album != null) {
-                        //album.updatePhotos(getApplicationContext());
-                        album.setCurrentMedia(path);
-                    }
-                }
-        */
 
         try {
             InputStream inputStream = getContentResolver().openInputStream(uri);
@@ -280,7 +262,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                 SingleMediaActivity.this.position = position;
                 updatePageTitle(position);
 
-                // Invalidate the options menu only when we aren't using the correct menu
+
                 if (isCurrentMediaImage() == useImageMenu) return;
                 supportInvalidateOptionsMenu();
             }
@@ -297,8 +279,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
         }
     }
 
-    // TODO: Figure out how we should classify Images and GIFs
-    // This should work temporarily
+
     private boolean isCurrentMediaImage() {
         return getCurrentMedia().isImage() && !getCurrentMedia().isGif();
     }
@@ -340,7 +321,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
         setNavBarColor();
         setRecentApp(getString(R.string.app_name));
 
-        //TODO: EMOJI EASTER EGG - THERE'S NOTHING TO SHOW
+
         ((TextView) findViewById(R.id.emoji_easter_egg)).setTextColor(getSubTextColor());
         ((TextView) findViewById(R.id.nothing_to_show_text_emoji_easter_egg)).setTextColor(getSubTextColor());
 
@@ -350,7 +331,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
         if (Prefs.getToggleValue(getString(R.string.preference_max_brightness), false))
             updateBrightness(1.0F);
         else try {
-            // TODO: 12/4/16 redo
+
             float brightness = android.provider.Settings.System.getInt(
                     getContentResolver(), android.provider.Settings.System.SCREEN_BRIGHTNESS);
             brightness = brightness == 1.0F ? 255.0F : brightness;
@@ -379,7 +360,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         if (isSlideShowOn) {
             getMenuInflater().inflate(R.menu.menu_view_page_slide_on, menu);
             menu.findItem(R.id.slide_show).setIcon(getToolbarIcon(CommunityMaterial.Icon.cmd_stop_circle_outline));
@@ -417,7 +398,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
             menu.setGroupVisible(R.id.only_photos_options, isImage);
 
             if (customUri) {
-                // TODO: 05/05/18 some things can be done even with custom uri
+
                 menu.setGroupVisible(R.id.on_internal_storage, false);
                 menu.setGroupVisible(R.id.only_photos_options, false);
             }
@@ -433,13 +414,12 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                     final Uri imageUri = UCrop.getOutput(data);
                     if (imageUri != null && imageUri.getScheme().equals("file")) {
                         try {
-                            //copyFileToDownloads(imageUri);
-                            // TODO: 21/08/16 handle this better
+
                             if (StorageHelper.copyFile(getApplicationContext(), new File(imageUri.getPath()), new File(this.album.getPath()))) {
-                                //((ImageFragment) adapter.getRegisteredFragment(this.album.getCurrentMediaIndex())).displayMedia(true);
+
                                 Toast.makeText(this, R.string.new_file_created, Toast.LENGTH_SHORT).show();
                             }
-                            //adapter.notifyDataSetChanged();
+
                         } catch (Exception e) {
                             Log.e("ERROS - uCrop", imageUri.toString(), e);
                         }
@@ -472,7 +452,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                             }
                         },
                         err -> {
-                            // TODO: 21/05/18 add progress show errors better?
+
 
                             Toast.makeText(getApplicationContext(), err.getMessage(), Toast.LENGTH_SHORT).show();
                         },
@@ -524,7 +504,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                 break;
 
             case R.id.action_share:
-                // TODO: 16/10/17 check if it works everywhere
+
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType(getCurrentMedia().getMimeType());
                 Uri uri1 = LegacyCompatFileProvider.getUri(this, getCurrentMedia().getFile());
@@ -534,7 +514,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                 return true;
 
             case R.id.action_edit:
-                // TODO: 16/10/17 redo
+
                 Uri mDestinationUri = Uri.fromFile(new File(getCacheDir(), "croppedImage.png"));
                 Uri uri = Uri.fromFile(new File(getCurrentMedia().getPath()));
                 UCrop uCrop = UCrop.of(uri, mDestinationUri);
@@ -628,7 +608,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                             boolean b = MediaHelper.renameMedia(getApplicationContext(), currentMedia, editTextNewName.getText().toString());
                             if (!b) {
                                 StringUtils.showToast(getApplicationContext(), getString(R.string.rename_error));
-                                //adapter.notifyDataSetChanged();
+
                             }
                         } else
                             StringUtils.showToast(getApplicationContext(), getString(R.string.nothing_changed));
@@ -654,8 +634,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                         .ok_action).toUpperCase(), (dialog, which) -> dialog.dismiss());
 
                 detailsDialog.setButton(DialogInterface.BUTTON_NEUTRAL, getString(R.string.fix_date).toUpperCase(), (dialog, which) -> {
-                    // todo
-                    //if (!getCurrentMedia().fixDate())
+
                     Toast.makeText(SingleMediaActivity.this, R.string.unable_to_fix_date, Toast.LENGTH_SHORT).show();
                 });
 
@@ -674,17 +653,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                 startActivity(paletteIntent);
                 break;
 
-            case R.id.action_print:
-                PrintHelper photoPrinter = new PrintHelper(this);
-                photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
-                try (InputStream in = getContentResolver().openInputStream(getCurrentMedia().getUri())) {
-                    Bitmap bitmap = BitmapFactory.decodeStream(in);
-                    photoPrinter.printBitmap(String.format("print_%s", getCurrentMedia().getDisplayPath() ), bitmap);
-                } catch (Exception e) {
-                    Log.e("print", String.format("unable to print %s", getCurrentMedia().getUri()), e);
-                    Toast.makeText(getApplicationContext(), R.string.print_error, Toast.LENGTH_SHORT).show();
-                }
-                break;
+
 
             case R.id.slide_show:
                 isSlideShowOn = !isSlideShowOn;

@@ -18,9 +18,6 @@ import org.horaapps.liz.ui.ThemedIcon;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by darken (darken@darken.eu) on 04.03.2017.
- */
 public class SettingBasic extends FrameLayout implements Themed {
     private final String iconString;
     @StringRes private final int titleRes;
@@ -64,10 +61,7 @@ public class SettingBasic extends FrameLayout implements Themed {
         title.setText(titleRes);
         caption.setText(captionRes);
 
-        /*
-        setPadding((int) getResources().getDimension(R.dimen.medium_spacing), 0, (int) getResources().getDimension(R.dimen.medium_spacing), 0);
-        setMinimumHeight((int) getResources().getDimension(R.dimen.listitem_height_twoline));
-        */
+
         super.onFinishInflate();
     }
 

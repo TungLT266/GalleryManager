@@ -22,10 +22,6 @@ import org.horaapps.leafpic.R;
 
 import java.util.List;
 
-/**
- * Created by dnld on 12/6/16.
- */
-
 public final class CustomExoPlayerView extends FrameLayout {
 
     private final View surfaceView;
@@ -218,7 +214,7 @@ public final class CustomExoPlayerView extends FrameLayout {
     private final class ComponentListener extends Player.DefaultEventListener implements TextOutput,
             SimpleExoPlayer.VideoListener {
 
-        // TextRenderer.Output implementation
+
         @Override
         public void onCues(List<Cue> cues) {
             if (subtitleLayout != null) {
@@ -226,7 +222,7 @@ public final class CustomExoPlayerView extends FrameLayout {
             }
         }
 
-        // SimpleExoPlayer.VideoListener implementation
+
         @Override
         public void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees, float pixelWidthHeightRatio) {
             if (layout != null) {

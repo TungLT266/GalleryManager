@@ -30,7 +30,7 @@ public class ErrorCauseViewHolder extends ThemedViewHolder {
         for (String c : errorCause.getCauses()) {
             ThemedTextView textView = new ThemedTextView(itemView.getContext());
             textView.setStyleColor(ThemedTextView.SUB_TEXT_COLOR);
-            //textView.setTextSize();
+
             textView.setText(c);
             causes.addView(textView);
         }

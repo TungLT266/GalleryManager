@@ -15,10 +15,6 @@ import org.horaapps.leafpic.R;
 import org.horaapps.leafpic.util.StaticMapProvider;
 import org.horaapps.liz.ThemedActivity;
 
-/**
- * Created by dnld on 12/9/16.
- */
-
 public class MapProviderSetting extends ThemedSetting {
 
     public MapProviderSetting(ThemedActivity activity) {

@@ -25,9 +25,6 @@ import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ThemedActivity;
 import org.horaapps.liz.ui.ThemedIcon;
 
-/**
- * Created by dnld on 22/05/16.
- */
 public class SecurityActivity extends ThemedActivity {
 
     private Toolbar toolbar;
@@ -66,8 +63,7 @@ public class SecurityActivity extends ThemedActivity {
         }
 
 
-        /** - SWITCHES - **/
-        /** - ACTIVE SECURITY - **/
+
         swActiveSecurity.setChecked(Security.isPasswordSet());
         swActiveSecurity.setClickable(false);
         findViewById(R.id.ll_active_security).setOnClickListener(new View.OnClickListener() {
@@ -93,7 +89,7 @@ public class SecurityActivity extends ThemedActivity {
             }
         });
 
-        /** - ACTIVE SECURITY ON HIDDEN FOLDER - **/
+
         swApplySecurityHidden.setChecked(Hawk.get("password_on_hidden", false));
         swApplySecurityHidden.setClickable(false);
         findViewById(R.id.ll_security_body_apply_hidden).setOnClickListener(new View.OnClickListener() {
@@ -105,7 +101,7 @@ public class SecurityActivity extends ThemedActivity {
             }
         });
 
-        /**ACTIVE SECURITY ON DELETE ACTION**/
+
         swApplySecurityDelete.setChecked(Hawk.get("password_on_delete", false));
         swApplySecurityDelete.setClickable(false);
         findViewById(R.id.ll_security_body_apply_delete).setOnClickListener(new View.OnClickListener() {
@@ -117,7 +113,7 @@ public class SecurityActivity extends ThemedActivity {
             }
         });
 
-        /** - FINGERPRINT - **/
+
         swFingerPrint.setChecked(Hawk.get("fingerprint_security", false));
         swFingerPrint.setClickable(false);
         findViewById(R.id.ll_active_security_fingerprint).setOnClickListener(new View.OnClickListener() {
@@ -245,14 +241,14 @@ public class SecurityActivity extends ThemedActivity {
         llroot.setBackgroundColor(getBackgroundColor());
         ((CardView) findViewById(org.horaapps.leafpic.R.id.security_dialog_card)).setCardBackgroundColor(getCardBackgroundColor());
 
-        /** ICONS **/
+
         int color = getIconColor();
         ((ThemedIcon) findViewById(org.horaapps.leafpic.R.id.active_security_icon)).setColor(color);
         ((ThemedIcon) findViewById(org.horaapps.leafpic.R.id.security_body_apply_hidden_icon)).setColor(color);
         ((ThemedIcon) findViewById(org.horaapps.leafpic.R.id.security_body_apply_delete_icon)).setColor(color);
         ((ThemedIcon) findViewById(org.horaapps.leafpic.R.id.active_security_fingerprint_icon)).setColor(color);
 
-        /** TEXTVIEWS **/
+
         color = getTextColor();
         ((TextView) findViewById(org.horaapps.leafpic.R.id.active_security_item_title)).setTextColor(color);
         ((TextView) findViewById(org.horaapps.leafpic.R.id.security_body_apply_on)).setTextColor(color);

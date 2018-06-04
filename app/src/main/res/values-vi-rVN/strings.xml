@@ -71,8 +71,8 @@
   <string name="rotate_left_90">Xoay trái 90°</string>
   <string name="rotate_180">Xoay 180°</string>
   <string name="copy_to">Sao chép đến</string>
-  <string name="move_to">Di chuyển tới</string>
-  <string name="use_as">Sử dụng như là</string>
+  <string name="move_to">Di chuyển đến</string>
+  <string name="use_as">Đặt ảnh làm</string>
   <string name="edit">Chỉnh sửa</string>
   <string name="fix_date">Ngày sửa</string>
   <string name="rename">Đổi tên</string>
@@ -81,8 +81,8 @@
   <string name="more">Nhiều hơn</string>
   <string name="print">In</string>
   <string name="show_more">Hiển thị thêm</string>
-  <string name="edit_with">Chỉnh sửa với</string>
-  <string name="open_with">Mở với</string>
+  <string name="edit_with">Chỉnh sửa bằng</string>
+  <string name="open_with">Mở bằng</string>
   <string name="upload">Tải lên</string>
   <string name="set_preview">Thiết lập như xem trước</string>
   <string name="clear_preview">Xóa xem trước</string>
@@ -111,7 +111,7 @@
   <string name="singular_photo">Hình chụp</string>
   <string name="plural_photos">Ảnh</string>
   <string name="video_player">Trình phát Video</string>
-  <string name="media">Phương tiện truyền thông</string>
+  <string name="media">Media</string>
   <string name="send_to">Gửi đến</string>
   <string name="search_menu">Tìm kiếm</string>
   <string name="full_resolution">Giải pháp đầy đủ</string>
@@ -186,7 +186,7 @@
   <string name="enable_timeline_title">Bật Dòng thời gian</string>
   <string name="enable_timeline_desc">Bật chế độ xem Dòng thời gian cho phương tiện. Thử nghiệm.</string>
 
-  <string name="media_viewer">Trình xem phương tiện</string>
+  <string name="media_viewer">Trình xem ảnh</string>
   <string name="media_viewer_theme">Chủ đề trình xem phương tiện</string>
   <string name="custom_3thAct">Trình xem phương tiện</string>
   <string name="custom_3thAct_sub">Áp dụng chủ đề trên trình xem hình ảnh.</string>
@@ -199,7 +199,7 @@
 
   <string name="max_brightness">Độ sáng cao</string>
   <string name="max_brightness_sub">Sử dụng độ sáng tối đa khi xem phương tiện</string>
-  <string name="picture_orientation">Buộc sử dụng gia tốc kế</string>
+  <string name="picture_orientation">Sử dụng cảm biến xoay</string>
   <string name="picture_orientation_sub">Xoay ảnh sử dụng cảm biến</string>
   <string name="apply_theme">Áp dụng chủ đề</string>
   <string name="apply_theme_sub">Áp dụng tùy chỉnh màu sắc trên trình xem ảnh.</string>
@@ -214,11 +214,11 @@
   <string name="video_instant_play_sub">Cho phép bạn phát video ngay lập tức, bỏ qua bản xem trước.</string>
 
   <string name="theme">Chủ đề</string>
-  <string name="primary_color">Màu chính</string>
+  <string name="primary_color">Màu giao diện</string>
   <string name="primary_color_sub">Màu sắc chính được sử dụng trong giao diện.</string>
-  <string name="accent_color">Accent Color</string>
+  <string name="accent_color">Màu chữ đề mục</string>
   <string name="accent_color_sub">Màu phụ được sử dụng để tô màu các widget và chi tiết giao diện người dùng.</string>
-  <string name="base_theme">Chủ đề cơ bản</string>
+  <string name="base_theme">Chủ đề</string>
   <string name="base_theme_sub">Chọn chủ đề cơ sở.</string>
   <string name="white">Sáng</string>
   <string name="dark">Tối</string>
@@ -263,9 +263,7 @@
   <string name="about_library_license_sub">Kiểm tra thư viện của bên thứ ba được sử dụng.</string>
 
   <string name="about_authors">Tác giả</string>
-  <string name="about_author_donald_description">
-        Tôi 23 tuổi. Tôi là một nhà phát triển phần mềm trẻ, tôi thích CS nói chung, và cụ thể hơn, tôi thích học và làm việc với Linux và Android.
-    </string>
+  <string name="about_author_donald_description"></string>
   <string name="about_author_gilbert_description"></string>
   <string name="about_developer_calvin_description"></string>
   <string name="about_googleplus" translatable="false">Google+</string>
@@ -311,8 +309,8 @@
   <string name="location">Vị trí</string>
 
   <!--DRAWER ITEMS -->
-  <string name="local_folder">Thư mục cục bộ</string>
-  <string name="all_media">Tất cả phương tiện</string>
+  <string name="local_folder">Thư mục</string>
+  <string name="all_media">Tất cả</string>
   <string name="hidden_folder">Thư mục ẩn</string>
   <string name="tags">Thẻ</string>
   <string name="timeline">Dòng thời gian</string>
@@ -384,12 +382,12 @@
   <string name="error_thumbnail">Không thể tìm thấy hình thu nhỏ cho album.</string>
   <string name="no_app_to_perform">Không thể tìm thấy ứng dụng để thực hiện tác vụ này.</string>
   <string name="deleting_images">Threw away %d/%d media!</string>
-  <string name="start_slide_show">Bắt đầu trình chiếu</string>
+  <string name="start_slide_show">Trình chiếu</string>
   <string name="stop_slide_show">Dừng trình chiếu</string>
   <string name="errors">Lỗi</string>
   <string name="waring_share_multiple_file_types">Có thể có sự cố khi chia sẻ nhiều loại tệp.</string>
   <string name="creators">Người tạo</string>
-  <string name="major_contributors">Thành viên nhóm 3</string>
+  <string name="major_contributors">Người đóng góp chính</string>
   <string name="toolbar_selection_count" translatable="false">%1$d of %2$d</string>
   <string name="delete_bottom_sheet_title">Đang dọn dẹp bộ nhớ…</string>
 

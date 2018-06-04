@@ -1,18 +1,4 @@
-/*
- * Copyright (C) 2016 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 package org.horaapps.leafpic.views.videoplayer;
 
 import android.annotation.SuppressLint;
@@ -44,10 +30,8 @@ import org.horaapps.liz.ThemeHelper;
 import java.util.Arrays;
 import java.util.Locale;
 
-/**
- * Helper class for displaying track selection dialogs.
- */
-/* package */ public final class TrackSelectionHelper implements View.OnClickListener,
+
+ public final class TrackSelectionHelper implements View.OnClickListener,
         DialogInterface.OnClickListener {
 
   private static final TrackSelection.Factory FIXED_FACTORY = new FixedTrackSelection.Factory();
@@ -65,31 +49,16 @@ import java.util.Locale;
   private CheckedTextView[][] trackViews;
   private ThemeHelper themeHelper;
 
-  /**
-   * @param selector The track selector.
-   * @param adaptiveVideoTrackSelectionFactory A factory for adaptive video {@link TrackSelection}s,
-   *     or null if the selection helper should not support adaptive video.
-   */
+
   public TrackSelectionHelper(MappingTrackSelector selector, TrackSelection.Factory adaptiveVideoTrackSelectionFactory, ThemeHelper themeHelper) {
     this.selector = selector;
     this.adaptiveVideoTrackSelectionFactory = adaptiveVideoTrackSelectionFactory;
     this.themeHelper = themeHelper;
   }
 
-  /*public TrackSelectionHelper(MappingTrackSelector selector,
-                              TrackSelection.Factory adaptiveTrackSelectionFactory) {
-    this.selector = selector;
-    this.adaptiveVideoTrackSelectionFactory = adaptiveTrackSelectionFactory;
-  }*/
 
-  /**
-   * Shows the selection dialog for a given renderer.
-   *
-   * @param activity The parent activity.
-   * @param title The dialog's title.
-   * @param trackInfo The current track information.
-   * @param rendererIndex The index of the renderer.
-   */
+
+
   public void showSelectionDialog(Activity activity, CharSequence title, MappedTrackInfo trackInfo,
                                   int rendererIndex) {
     this.trackInfo = trackInfo;
@@ -162,7 +131,7 @@ import java.util.Locale;
     }
   }
 
-  // DialogInterface.OnClickListener
+
 
   @Override
   public void onClick(DialogInterface dialog, int which) {
@@ -174,13 +143,13 @@ import java.util.Locale;
     }
   }
 
-  // View.OnClickListener
+
 
   @Override
   public void onClick(View view) {
 
     isDisabled = false;
-    @SuppressWarnings("unchecked")
+
     Pair<Integer, Integer> tag = (Pair<Integer, Integer>) view.getTag();
     int groupIndex = tag.first;
     int trackIndex = tag.second;
@@ -188,24 +157,24 @@ import java.util.Locale;
             || override.groupIndex != groupIndex) {
       override = new SelectionOverride(FIXED_FACTORY, groupIndex, trackIndex);
     } else {
-      // The group being modified is adaptive and we already have a non-null override.
+
       boolean isEnabled = ((CheckedTextView) view).isChecked();
       int overrideLength = override.length;
       if (isEnabled) {
-        // Remove the track from the override.
+
         if (overrideLength == 1) {
-          // The last track is being removed, so the override becomes empty.
+
           override = null;
           isDisabled = true;
         } else {
           setOverride(groupIndex, getTracksRemoving(override, trackIndex), false);
         }
       } else {
-        // Add the track to the override.
+
         setOverride(groupIndex, getTracksAdding(override, trackIndex), false);
       }
     }
-    // Update the views with the new state.
+
     updateViews();
   }
 
@@ -215,7 +184,7 @@ import java.util.Locale;
     override = new SelectionOverride(factory, group, tracks);
   }
 
-  // Track array manipulation.
+
 
   private static int[] getTracksAdding(SelectionOverride override, int addedTrack) {
     int[] tracks = override.tracks;
@@ -236,7 +205,7 @@ import java.util.Locale;
     return tracks;
   }
 
-  // Track name construction.
+
 
   private static String buildTrackName(Format format) {
     String trackName;

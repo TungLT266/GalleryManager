@@ -43,9 +43,6 @@ import java.util.stream.Collectors;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by dnld on 1/7/16.
- */
 public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
 
     private List<Album> albums;
@@ -247,7 +244,7 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final AlbumsAdapter.ViewHolder holder, int position) {
-        // TODO Calvin: Major Refactor - No business logic here.
+
         Album a = albums.get(position);
         holder.refreshTheme(getThemeHelper(), cardViewStyle, a.isSelected());
 
@@ -259,7 +256,7 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
                 .centerCrop()
                 .placeholder(placeholder)
                 .error(org.horaapps.leafpic.R.drawable.ic_error)
-                //.animate(R.anim.fade_in)//TODO:DONT WORK WELL
+
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
 
         Glide.with(holder.picture.getContext())
@@ -286,12 +283,7 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
         holder.path.setVisibility(Prefs.showAlbumPath() ? View.VISIBLE : View.GONE);
         holder.path.setText(a.getPath());
 
-        //START Animation MAKES BUG ON FAST TAP ON CARD
-        //Animation anim;
-        //anim = AnimationUtils.loadAnimation(holder.albumCard.getContext(), R.anim.slide_fade_card);
-        //holder.albumCard.startAnimation(anim);
-        //ANIMS
-        //holder.card.animate().alpha(1).setDuration(250);
+
 
         holder.card.setOnClickListener(v -> {
             if (selecting()) {
@@ -319,8 +311,7 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
         if (i < 0) i = ~i;
         albums.add(i, album);
         notifyItemInserted(i);
-        //int finalI = i;
-        //((ThemedActivity) context).runOnUiThread(() -> notifyItemInserted(finalI));
+
         return i;
 
     }

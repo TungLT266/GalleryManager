@@ -63,16 +63,13 @@ import static org.horaapps.leafpic.views.navigation_drawer.NavigationDrawer.Item
 import static org.horaapps.leafpic.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_ABOUT;
 import static org.horaapps.leafpic.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_ALL_ALBUMS;
 import static org.horaapps.leafpic.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_ALL_MEDIA;
-import static org.horaapps.leafpic.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_DONATE;
+//import static org.horaapps.leafpic.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_DONATE;
 import static org.horaapps.leafpic.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_HIDDEN_FOLDERS;
 import static org.horaapps.leafpic.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_SETTINGS;
 import static org.horaapps.leafpic.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_TIMELINE;
-import static org.horaapps.leafpic.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_WALLPAPERS;
+//import static org.horaapps.leafpic.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_WALLPAPERS;
 import static org.horaapps.leafpic.views.navigation_drawer.NavigationDrawer.NavigationItem;
 
-/**
- * The Main Activity used to display Albums / Media.
- */
 public class MainActivity extends SharedMediaActivity implements
         MediaClickListener, AlbumsFragment.AlbumClickListener,
         NothingToShowListener, EditModeListener, ItemListener {
@@ -118,7 +115,7 @@ public class MainActivity extends SharedMediaActivity implements
             return;
         }
 
-        // We have some instance state
+
         restoreState(savedInstanceState);
 
         switch (fragmentMode) {
@@ -229,9 +226,8 @@ public class MainActivity extends SharedMediaActivity implements
                 intent.putExtra(SingleMediaActivity.EXTRA_ARGS_MEDIA, media);
                 intent.putExtra(SingleMediaActivity.EXTRA_ARGS_POSITION, position);
                 startActivity(intent);
-            } catch (Exception e) { // Putting too much data into the Bundle
-                // TODO: Find a better way to pass data between the activities - possibly a key to
-                // access a HashMap or a unique value of a singleton Data Repository of some sort.
+            } catch (Exception e) {
+
                 intent.setAction(SingleMediaActivity.ACTION_OPEN_ALBUM_LAZY);
                 intent.putExtra(SingleMediaActivity.EXTRA_ARGS_MEDIA, media.get(position));
                 startActivity(intent);
@@ -360,25 +356,25 @@ public class MainActivity extends SharedMediaActivity implements
     @Override
     public void updateUiElements() {
         super.updateUiElements();
-        //TODO: MUST BE FIXED
+
         toolbar.setPopupTheme(getPopupToolbarStyle());
         toolbar.setBackgroundColor(getPrimaryColor());
 
-        /**** SWIPE TO REFRESH ****/
+
 
         setStatusBarColor();
         setNavBarColor();
 
         fab.setBackgroundTintList(ColorStateList.valueOf(getAccentColor()));
-        fab.setVisibility(Hawk.get(getString(R.string.preference_show_fab), false) ? View.VISIBLE : View.GONE);
+        fab.setVisibility(Hawk.get(getString(R.string.preference_show_fab), true) ? View.VISIBLE : View.GONE);
         mainLayout.setBackgroundColor(getBackgroundColor());
 
-//        setScrollViewColor(navigationDrawerView);
+
         setAllScrollbarsColor();
 
         navigationDrawerView.setTheme(getPrimaryColor(), getBackgroundColor(), getTextColor(), getIconColor());
 
-        // TODO Calvin: This performs a NO-OP. Find out what this is used for
+
         setRecentApp(getString(R.string.app_name));
     }
 
@@ -406,7 +402,7 @@ public class MainActivity extends SharedMediaActivity implements
 
     @Deprecated
     public void checkNothing(boolean status) {
-        //TODO: @jibo come vuo fare qua? o anzi sopra!
+
         ((TextView) findViewById(R.id.emoji_easter_egg)).setTextColor(getSubTextColor());
         ((TextView) findViewById(R.id.nothing_to_show_text_emoji_easter_egg)).setTextColor(getSubTextColor());
 
@@ -437,100 +433,16 @@ public class MainActivity extends SharedMediaActivity implements
                 SettingsActivity.startActivity(this);
                 return true;
 
-            /*
-            case R.id.action_move:
-                SelectAlbumBuilder.with(getSupportFragmentManager())
-                        .title(getString(R.string.move_to))
-                        .onFolderSelected(new SelectAlbumBuilder.OnFolderSelected() {
-                            @Override
-                            public void folderSelected(String path) {
-                                //TODo
-                                //swipeRefreshLayout.setRefreshing(true);
-                                /*if (getAlbum().moveSelectedMedia(getApplicationContext(), path) > 0) {
-                                    if (getAlbum().getMedia().size() == 0) {
-                                        //getAlbums().removeCurrentAlbum();
-                                        //albumsAdapter.notifyDataSetChanged();
-                                        displayAlbums(false);
-                                    }
-                                    //oldMediaAdapter.swapDataSet(getAlbum().getMedia());
-                                    //finishEditMode();
-                                    supportInvalidateOptionsMenu();
-                                } else requestSdCardPermissions();
-
-                                //swipeRefreshLayout.setRefreshing(false);
-                            }
-                        }).show();
-                return true;
-                */
-
-            /*
-            case R.id.action_copy:
-                SelectAlbumBuilder.with(getSupportFragmentManager())
-                        .title(getString(R.string.copy_to))
-                        .onFolderSelected(new SelectAlbumBuilder.OnFolderSelected() {
-                            @Override
-                            public void folderSelected(String path) {
-                                boolean success = getAlbum().copySelectedPhotos(getApplicationContext(), path);
-                                //finishEditMode();
-
-                                if (!success) // TODO: 11/21/16 handle in other way
-                                    requestSdCardPermissions();
-                            }
-                        }).show();
-
-                return true;
-
-                */
 
 
-            /*case R.id.rename:
-                final EditText editTextNewName = new EditText(getApplicationContext());
-                editTextNewName.setText(albumsMode ? firstSelectedAlbum.getName() : getAlbum().getName());
 
-                final AlertDialog insertTextDialog = AlertDialogsHelper.getInsertTextDialog(MainActivity.this, editTextNewName, R.string.rename_album);
 
-                insertTextDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel).toUpperCase(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onMediaClick(DialogInterface dialogInterface, int i) {
-                        insertTextDialog.dismiss();
-                    }
-                });
 
-                insertTextDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onMediaClick(DialogInterface dialogInterface, int i) {
-                        if (editTextNewName.length() != 0) {
-                            swipeRefreshLayout.setRefreshing(true);
-                            boolean success;
-                            if (albumsMode) {
 
-                                int index = getAlbums().albums.indexOf(firstSelectedAlbum);
-                                getAlbums().getAlbum(index).updatePhotos(getApplicationContext());
-                                success = getAlbums().getAlbum(index).renameAlbum(getApplicationContext(),
-                                        editTextNewName.getText().toString());
-                                albumsAdapter.notifyItemChanged(index);
-                            } else {
-                                success = getAlbum().renameAlbum(getApplicationContext(), editTextNewName.getText().toString());
-                                toolbar.setTitle(getAlbum().getName());
-                                oldMediaAdapter.notifyDataSetChanged();
-                            }
-                            insertTextDialog.dismiss();
-                            if (!success) requestSdCardPermissions();
-                            swipeRefreshLayout.setRefreshing(false);
-                        } else {
-                            StringUtils.showToast(getApplicationContext(), getString(R.string.insert_something));
-                            editTextNewName.requestFocus();
-                        }
-                    }
-                });
-
-                insertTextDialog.show();
-                return true;*/
 
 
             default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
+
                 return super.onOptionsItemSelected(item);
         }
     }
@@ -584,18 +496,12 @@ public class MainActivity extends SharedMediaActivity implements
                 }
                 break;
 
-            case NAVIGATION_ITEM_WALLPAPERS:
-                Toast.makeText(MainActivity.this, "Coming Soon!", Toast.LENGTH_SHORT).show();
-                break;
 
-            case NAVIGATION_ITEM_DONATE:
-                DonateActivity.startActivity(this);
-                break;
 
             case NavigationDrawer.NAVIGATION_ITEM_AFFIX:
                 Intent i = new Intent(getBaseContext(), AffixActivity.class);
                 startActivity(i);
-                //   AffixActivity.startActivity(this);
+
                 break;
             case NAVIGATION_ITEM_SETTINGS:
                 SettingsActivity.startActivity(this);

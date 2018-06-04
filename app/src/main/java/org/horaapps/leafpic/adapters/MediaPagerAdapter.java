@@ -15,10 +15,6 @@ import org.horaapps.leafpic.fragments.VideoFragment;
 
 import java.util.ArrayList;
 
-/**
- * Created by dnld on 18/02/16.
- */
-
 public class MediaPagerAdapter extends FragmentStatePagerAdapter {
 
     private final String TAG = "asd";

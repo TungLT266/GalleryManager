@@ -16,9 +16,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * Custom ViewHolder for populating a Contributor onto {@link ContributorsAdapter}
- */
 public class ContributorViewHolder extends ThemedViewHolder {
 
     @BindView(R.id.contributor_profile_image) CircleImageView profileImage;

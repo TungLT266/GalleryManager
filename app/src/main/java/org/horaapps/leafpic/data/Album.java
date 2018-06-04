@@ -15,9 +15,6 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by dnld on 26/04/16.
- */
 public class Album implements CursorHandler, Parcelable {
 
 	public static final long ALL_MEDIA_ALBUM_ID = 8000;
@@ -103,7 +100,7 @@ public class Album implements CursorHandler, Parcelable {
 		return this;
 	}
 
-	//region Album Properties Getters
+
 	public String getName() {
 		return name;
 	}
@@ -125,7 +122,7 @@ public class Album implements CursorHandler, Parcelable {
 			return new Media(settings.coverPath);
 		if (lastMedia != null)
 			return lastMedia;
-		// TODO: 11/20/16 how should i handle this?
+
 		return new Media();
 	}
 
@@ -172,7 +169,7 @@ public class Album implements CursorHandler, Parcelable {
 				", count=" + count +
 				'}';
 	}
-	//endregion
+
 
 	public ArrayList<String> getParentsFolders() {
 		ArrayList<String> result = new ArrayList<>();
@@ -185,7 +182,7 @@ public class Album implements CursorHandler, Parcelable {
 		return result;
 	}
 
-	//region Album Properties Setters
+
 
 	public void setCount(int count) {
 		this.count = count;
@@ -224,45 +221,21 @@ public class Album implements CursorHandler, Parcelable {
 		return settings.pinned;
 	}
 
-	//endregion
+
 
 	@Deprecated
 	public int moveSelectedMedia(Context context, String targetDir) {
-		/*int n = 0;
-		try
-		{
-			for (int i = 0; i < selectedMedia.size(); i++) {
 
-				if (moveMedia(context, selectedMedia.get(i).getPath(), targetDir)) {
-					String from = selectedMedia.get(i).getPath();
-					scanFile(context, new String[]{ from, StringUtils.getPhotoPathMoved(selectedMedia.get(i).getPath(), targetDir) },
-							new MediaScannerConnection.OnScanCompletedListener() {
-								@Override
-								public void onScanCompleted(String s, Uri uri) {
-									Log.d("scanFile", "onScanCompleted: " + s);
-								}
-							});
-					media.remove(selectedMedia.get(i));
-					n++;
-				}
-			}
-		} catch (Exception e) { e.printStackTrace(); }
-		setCount(media.size());
-		return n;*/
 		return -1;
 	}
 
 
 	public void sortPhotos() {
-		/*Collections.sort(media, MediaComparators.getComparator(settings.getSortingMode(), settings.getSortingOrder()));*/
+
 	}
 
 	public boolean copySelectedPhotos(Context context, String folderPath) {
-		/*boolean success = true;
-		for (Media media : selectedMedia)
-			if(!copyPhoto(context, media.getPath(), folderPath))
-				success = false;
-		return success;*/
+
 		return false;
 	}
 
@@ -275,57 +248,14 @@ public class Album implements CursorHandler, Parcelable {
 	}
 
 	public boolean deleteSelectedMedia(Context context) {
-		/*boolean success = true;
-		for (Media selectedMedia : this.selectedMedia) {
-			if (deleteMedia(context, selectedMedia))
-				media.remove(selectedMedia);
-			else success = false;
-		}
-		if (success) {
-			clearSelectedMedia();
-			setCount(media.size());
-		}
-		return success;*/
+
 		return false;
 	}
 
 	private boolean found_id_album = false;
 
 	public boolean renameAlbum(final Context context, String newName) {
-		/*found_id_album = false;
-		boolean success;
-		File dir = new File(StringUtils.getAlbumPathRenamed(getPath(), newName));
-		if (success = StorageHelper.mkdir(context, dir)) {
-			for (final Media m : media) {
-				File from = new File(m.getPath());
-				File to = new File(StringUtils.getPhotoPathRenamedAlbumChange(m.getPath(), newName));
-				if (StorageHelper.moveFile(context, from, to)) {
-					scanFile(context, new String[]{from.getAbsolutePath() });
-					scanFile(context, new String[]{ to.getAbsolutePath() }, new MediaScannerConnection.OnScanCompletedListener() {
-						@Override
-						public void onScanCompleted(String s, Uri uri) {
-							// TODO: 05/08/16 it sucks! look for a better solution!
 
-							if (!found_id_album) {
-								id = ContentProviderHelper.getAlbumId(context, s);
-								found_id_album = true;
-							}
-							Log.d(s, "onScanCompleted: "+s);
-							m.setPath(s); m.setUri(uri.toString());
-						}
-					});
-
-				} else success = false;
-			}
-		}
-		if(success) {
-			path = dir.getAbsolutePath();
-			name = newName;
-			// NOTE: the following line doesn't work
-			//id = ContentProviderHelper.getAlbumId(context, media.getValue(0).getPath());
-
-		}
-		return success;*/
 
 		return false;
 	}

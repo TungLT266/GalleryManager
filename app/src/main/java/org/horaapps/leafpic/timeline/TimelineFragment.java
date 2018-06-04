@@ -39,9 +39,6 @@ import butterknife.ButterKnife;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-/**
- * Fragment which shows the Timeline.
- */
 public class TimelineFragment extends BaseFragment {
 
     public static final String TAG = "TimelineFragment";
@@ -92,12 +89,12 @@ public class TimelineFragment extends BaseFragment {
             return;
         }
 
-        // Get content from arguments
+
         Bundle arguments = getArguments();
         if (arguments == null) return;
         contentAlbum = arguments.getParcelable(ARGS_ALBUM);
 
-        // Set defaults
+
         groupingMode = GroupingMode.DAY;
         filterMode = FilterMode.ALL;
     }
@@ -287,11 +284,11 @@ public class TimelineFragment extends BaseFragment {
 
     @Override
     public void onSelectMode(boolean selectMode) {
-        // TODO: Implement via this interface
+
     }
 
     @Override
     public void onSelectionCountChanged(int selectionCount, int totalCount) {
-        // TODO: Implement via this interface
+
     }
 }

@@ -20,9 +20,6 @@ import org.horaapps.liz.ui.ThemedIcon;
 
 import java.security.MessageDigest;
 
-/**
- * Created by Jibo on 06/05/2016.
- */
 public class Security {
 
     public static void setPasswordOnDelete(boolean passwordOnDelete) {
@@ -86,7 +83,7 @@ public class Security {
         builder.setView(view);
 
         builder.setPositiveButton(activity.getString(R.string.ok_action).toUpperCase(), (dialog, which) -> {
-            // NOTE: set this empty, later will be overwrite to avoid the dismiss
+
         });
 
         builder.setNegativeButton(activity.getString(R.string.cancel).toUpperCase(), (dialog, which) -> hideKeyboard(activity, editTextPassword.getWindowToken()));
@@ -109,7 +106,7 @@ public class Security {
 
                     @Override
                     public void onError(String s) {
-                        // TODO: 9/9/17 siplaymessage
+
                     }
                 });
 

@@ -33,16 +33,10 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.exceptions.CompositeException;
 import io.reactivex.schedulers.Schedulers;
 
-/**
- * Created by dnld on 11/03/18.
- */
-
 public class ProgressBottomSheet<T> extends BottomSheetDialogFragment {
 
 
-    /**
-     * Interface for listeners to get callbacks when items are processed.
-     */
+
     public interface Listener<T> {
         void onCompleted();
 
@@ -223,7 +217,7 @@ public class ProgressBottomSheet<T> extends BottomSheetDialogFragment {
                     listener.onProgress(item);
                     setProgress((int) (progressBar.getProgress() + 1));
                 }, err -> {
-                    // Note: progress is useless here since errors are delayed
+
                     if (err instanceof CompositeException) showErrors(((CompositeException) err));
                     else showErrors(err);
                 });

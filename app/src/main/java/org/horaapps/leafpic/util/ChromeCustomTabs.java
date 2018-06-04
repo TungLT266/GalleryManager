@@ -11,10 +11,7 @@ import android.support.customtabs.CustomTabsServiceConnection;
 
 import org.horaapps.liz.ThemeHelper;
 
-/**
- * A Chrome Custom Tabs wrapper to preload and show URLs in Chrome Custom Tabs.
- * Also provides a static method to launch a tab directly without warm up.
- */
+
 public class ChromeCustomTabs {
 
     private CustomTabsServiceConnection serviceConnection;
@@ -39,11 +36,11 @@ public class ChromeCustomTabs {
 
             @Override
             public void onServiceDisconnected(ComponentName name) {
-                // NO-OP
+
             }
         };
 
-        // Bind the Chrome Custom Tabs service
+
         CustomTabsClient.bindCustomTabsService(context, ApplicationUtils.getPackageName(), serviceConnection);
 
         mCustomTabsIntent = new CustomTabsIntent.Builder()
@@ -56,19 +53,12 @@ public class ChromeCustomTabs {
         mCustomTabsIntent.launchUrl(context, Uri.parse(Url));
     }
 
-    /**
-     * Allow the Chrome Custom Tabs service to disconnect and GC.
-     */
+
     public void destroy() {
         context.unbindService(serviceConnection);
     }
 
-    /**
-     * Launches a Chrome Custom Tab without warmup / service.
-     *
-     * @param context The context - used for launching an Activity.
-     * @param url     The URL to load.
-     */
+
     public static void launchUrl(@NonNull Context context, @NonNull String url) {
         CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
         customTabsIntent.launchUrl(context, Uri.parse(url));

@@ -9,10 +9,6 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
 import java.security.MessageDigest;
 
-/**
- * Created by dnld on 9/17/17.
- */
-
 public class GLideRotateTransformation extends BitmapTransformation {
 
     private float rotateRotationAngle = 0f;

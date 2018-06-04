@@ -1,9 +1,5 @@
 package org.horaapps.leafpic;
 
-/**
- * Created by Jibo on 18/04/2016.
- */
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -145,18 +141,8 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
                         displayContentFolder(Environment.getExternalStorageDirectory());
                         break;
                     default:
-                        // TODO: 12/11/16 check this plis
-//                        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-//                            DocumentFile documentFile = StorageHelper.getDocumentFile(getContext(), new File(StorageHelper.getExtSdCardPaths(getContext())[pos - 1]), true, false);
-//                            if(documentFile != null){
-//                                displayContentFolder(new File(StorageHelper.getExtSdCardPaths(getContext())[pos - 1]));
-//                            } else {
-//                                Toast.makeText(getContext(), getString(R.string.no_permission), Toast.LENGTH_LONG).choseProvider();
-//                                spinner.setSelection(0);
-//                            }
-//                        } else {
-//                            displayContentFolder(new File(StorageHelper.getExtSdCardPaths(getContext())[pos - 1]));
-//                        }
+
+
                         break;
                 }
             }
@@ -165,7 +151,7 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
-        /**SET UP THEME**/
+
         contentView.findViewById(R.id.rl_bottom_sheet_title).setBackgroundColor(theme.getPrimaryColor());
         exploreModePanel.setBackgroundColor(theme.getPrimaryColor());
         contentView.findViewById(R.id.ll_select_folder).setBackgroundColor(theme.getCardBackgroundColor());
@@ -268,9 +254,7 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
 
             for (String al : Hawk.get("albums", new ArrayList<String>()))
                 folders.add(new File(al));
-            /*for (Album album : ((App) getActivity().getApplicationContext()).getAlbums().albums) {
-                folders.add(new File(album.getPath()));
-            }*/
+
             imgExploreMode.setIcon(theme.getIcon(CommunityMaterial.Icon.cmd_compass_outline));
             exploreModePanel.setVisibility(View.GONE);
         }

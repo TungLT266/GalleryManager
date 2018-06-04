@@ -10,9 +10,6 @@ import org.horaapps.leafpic.data.Media;
 
 import pl.droidsonroids.gif.GifImageView;
 
-/**
- * Media Fragment for showing an Image (static)
- */
 public class GifFragment extends BaseMediaFragment {
 
     @NonNull

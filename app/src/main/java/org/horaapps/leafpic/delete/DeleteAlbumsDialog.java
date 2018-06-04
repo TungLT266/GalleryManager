@@ -26,10 +26,6 @@ import org.horaapps.liz.ThemedAlertDialogBuilder;
 import java.io.File;
 import java.util.ArrayList;
 
-/**
- * Created by dnld on 6/29/17.
- */
-
 @Deprecated
 public class DeleteAlbumsDialog extends DialogFragment {
 
@@ -95,7 +91,7 @@ public class DeleteAlbumsDialog extends DialogFragment {
 
                     for (int j = 0; j < files.length; j++) {
                         final int finJ = j;
-                        //StorageHelper.deleteFile(getContext(), files[j]);
+
                         if (isCancelled()) break;
 
                         try {
@@ -180,23 +176,5 @@ public class DeleteAlbumsDialog extends DialogFragment {
         deleteTask = new DeleteAlbums().execute();
     }
 
-    /*@Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        public static AlertDialog getTextDialog(ThemedActivity activity, @StringRes int title, @StringRes int Message){
-            AlertDialog.Builder builder = new AlertDialog.Builder(activity,activity.getDialogStyle());
-            View dialogLayout = activity.getLayoutInflater().inflate(R.layout.dialog_delete_album_progress, null);
-
-            TextView dialogTitle = (TextView) dialogLayout.findViewById(org.horaapps.leafpic.R.id.text_dialog_title);
-            TextView folderName = (TextView) dialogLayout.findViewById(org.horaapps.leafpic.R.id.text_dialog_message);
-
-            ((CardView) dialogLayout.findViewById(org.horaapps.leafpic.R.id.message_card)).setCardBackgroundColor(activity.getCardBackgroundColor());
-            dialogTitle.setBackgroundColor(activity.getPrimaryColor());
-            dialogTitle.setText(title);
-            folderName.setText(Message);
-            folderName.setTextColor(activity.getTextColor());
-            builder.setView(dialogLayout);
-            return builder.create();
-        }
-    }*/
 }

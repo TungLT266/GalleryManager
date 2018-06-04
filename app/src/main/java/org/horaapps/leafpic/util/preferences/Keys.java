@@ -1,11 +1,9 @@
 package org.horaapps.leafpic.util.preferences;
 
-/**
- * Class for Preference keys.
- */
+
 public final class Keys {
 
-    // Prevent class instantiation
+
     private Keys() {}
 
     public static final String FOLDER_COLUMNS_PORTRAIT = "folder_columns_portrait";
@@ -28,6 +26,6 @@ public final class Keys {
 
     public static final String ANIMATIONS_DISABLED = "disable_animations";
 
-    // Feature flags
+
     public static final String TIMELINE_ENABLED = "enable_timeline";
 }

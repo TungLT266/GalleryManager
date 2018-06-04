@@ -22,11 +22,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-
-/**
- * Created by dnld on 14/08/16.
- */
-
 class MetaDataItem {
 
     private static final String TAG = "MetaData";
@@ -52,7 +47,7 @@ class MetaDataItem {
 
     private void load(Context context, Uri uri) {
 
-        /* Bitmap Metadata */
+
         try (InputStream in = context.getContentResolver().openInputStream(uri)) {
             if (in == null) return;
 
@@ -69,7 +64,7 @@ class MetaDataItem {
             return;
         }
 
-        /* Exif Metadata */
+
         try (InputStream in = context.getContentResolver().openInputStream(uri)) {
             if (in == null) return;
 

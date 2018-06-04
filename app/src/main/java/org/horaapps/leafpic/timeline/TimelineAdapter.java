@@ -31,9 +31,6 @@ import static org.horaapps.leafpic.timeline.ViewHolder.TimelineHeaderViewHolder;
 import static org.horaapps.leafpic.timeline.ViewHolder.TimelineMediaViewHolder;
 import static org.horaapps.leafpic.timeline.ViewHolder.TimelineViewHolder;
 
-/**
- * Adapter for showing Timeline.
- */
 public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
 
     private List<TimelineItem> timelineItems;
@@ -61,21 +58,17 @@ public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
         return true;
     }
 
-    /**
-     * Set the grouping mode (DAY, WEEK, MONTH, YEAR) of the Timeline.
-     */
+
     public void setGroupingMode(@NonNull GroupingMode groupingMode) {
         this.groupingMode = groupingMode;
 
         if (mediaItems == null) return;
 
-        // Rebuild the Timeline Items
+
         buildTimelineItems();
     }
 
-    /**
-     * Set the sorting order (ASCENDING, DESCENDING) of the Timeline.
-     */
+
     public void setSortingOrder(@NonNull SortingOrder sortingOrder) {
         this.sortingOrder = sortingOrder;
         notifyDataSetChanged();
@@ -110,10 +103,10 @@ public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
             public int getSpanSize(int position) {
                 TimelineItem timelineItem = getItem(position);
 
-                // If we have a header item, occupy the entire width
+
                 if (timelineItem.getTimelineType() == TimelineItem.TYPE_HEADER) return timelineGridSize;
 
-                // Else, a media item takes up a single space
+
                 return 1;
             }
         });
@@ -154,7 +147,7 @@ public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
             mediaHolder.bind((Media) timelineItem);
 
             mediaHolder.layout.setOnClickListener(v -> {
-                // Find this element's position in Media Items
+
                 for (int pos = 0; pos < mediaItems.size(); pos++) {
                     Media mediaItem = mediaItems.get(pos);
                     if (mediaItem.equals(timelineItem)) {
@@ -177,16 +170,9 @@ public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
         notifyDataSetChanged();
     }
 
-    /**
-     * Get the list of Timeline Items to show.
-     * Internally adds the headers to the list.
-     *
-     * @param mediaList The list of media items to show.
-     * @return A list with headers to be inflated for Timeline.
-     */
+
     private List<TimelineItem> getTimelineItems(@NonNull List<Media> mediaList) {
-        // Preprocessing - Add headers in the list of media
-        // TODO: Think of ways to optimise / improve this logic
+
 
         List<TimelineItem> timelineItemList = new ArrayList<>();
 

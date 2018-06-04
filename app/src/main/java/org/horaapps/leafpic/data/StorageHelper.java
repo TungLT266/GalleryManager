@@ -36,20 +36,12 @@ import java.util.HashSet;
 
 import static org.horaapps.leafpic.data.MediaHelper.scanFile;
 
-/**
- * Created by dnld on 26/05/16.
- */
 public class StorageHelper {
 
 	private static final String TAG = "StorageHelper";
 	private static final String PRIMARY_VOLUME_NAME = "primary";
 
-	/**
-	 * Check is a file is writable. Detects write issues on external SD card.
-	 *
-	 * @param file The file
-	 * @return true if the file is writable.
-	 */
+
 	private static boolean isWritable(@NonNull final File file) {
 		boolean isExisting = file.exists();
 
@@ -67,9 +59,9 @@ public class StorageHelper {
 		}
 		boolean result = file.canWrite();
 
-		// Ensure that file is not created during this process.
+
 		if (!isExisting) {
-			//noinspection ResultOfMethodCallIgnored
+
 			file.delete();
 		}
 
@@ -77,25 +69,20 @@ public class StorageHelper {
 	}
 
 
-	/**
-	 * Create a folder. The folder may even be on external SD card for Kitkat.
-	 *
-	 * @param dir The folder to be created.
-	 * @return True if creation was successful.
-	 */
+
 	public static boolean mkdir(Context context, @NonNull final File dir) {
 		boolean success = dir.exists();
-		// Try the normal way
+
 		if (!success) success = dir.mkdir();
 
-		// Try with Storage Access Framework.
+
 		if (!success && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 			DocumentFile document = getDocumentFile(context, dir, true, true);
-			// getDocumentFile implicitly creates the directory.
+
 			success = document != null && document.exists();
 		}
 
-		//let MediaStore know that a dir was created
+
 		if (success) scanFile(context, new String[] { dir.getPath() });
 
 		return success;
@@ -124,9 +111,9 @@ public class StorageHelper {
 		try {
 			inStream = new FileInputStream(source);
 
-			// First try the normal way
+
 			if (isWritable(target)) {
-				// standard way
+
 				FileChannel inChannel = new FileInputStream(source).getChannel();
 				FileChannel outChannel = new FileOutputStream(target).getChannel();
 				inChannel.transferTo(0, inChannel.size(), outChannel);
@@ -135,23 +122,21 @@ public class StorageHelper {
 				try { outChannel.close(); } catch (Exception ignored) { }
 			} else {
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-					//inStream = context.getContentResolver().openInputStream(Uri.fromFile(source));
-					//outStream = context.getContentResolver().openOutputStream(Uri.fromFile(target));
+
 					if (isFileOnSdCard(context, source)) {
 						DocumentFile sourceDocument = getDocumentFile(context, source, false, false);
 						if (sourceDocument != null) {
 							inStream = context.getContentResolver().openInputStream(sourceDocument.getUri());
 						}
 					}
-					// Storage Access Framework
+
 					DocumentFile targetDocument = getDocumentFile(context, target, false, false);
 					if (targetDocument != null) {
 						outStream = context.getContentResolver().openOutputStream(targetDocument.getUri());
 					}
 				}
 				else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-					// TODO: 13/08/16 test this
-					// Workaround for Kitkat ext SD card
+
 					Uri uri = getUriFromFile(context,target.getAbsolutePath());
 					if (uri != null) {
 						outStream = context.getContentResolver().openOutputStream(uri);
@@ -159,8 +144,8 @@ public class StorageHelper {
 				}
 
 				if (outStream != null) {
-					// Both for SAF and for Kitkat, write to output stream.
-					byte[] buffer = new byte[4096]; // MAGIC_NUMBER
+
+					byte[] buffer = new byte[4096];
 					int bytesRead;
 					while ((bytesRead = inStream.read(buffer)) != -1) outStream.write(buffer, 0, bytesRead);
 					success = true;
@@ -185,18 +170,9 @@ public class StorageHelper {
 		return sdcardPath != null && file.getPath().startsWith(sdcardPath);
 	}
 
-	/**
-	 * Move a file. The target file may even be on external SD card.
-	 *
-	 * @param source The source file
-	 * @param target The target Directory
-	 * @return true if the copying was successful.
-	 */
-	public static boolean moveFile(Context context, @NonNull final File source, @NonNull final File target) {
-		// the param "target" is a file.
-		// File target = new File(target, source.getName());
 
-		// First try the normal rename.
+	public static boolean moveFile(Context context, @NonNull final File source, @NonNull final File target) {
+
 		boolean success = source.renameTo(target);
 
 		if (!success) {
@@ -211,16 +187,11 @@ public class StorageHelper {
 			}
 		}
 
-		//if (success) scanFile(context, new String[]{ source.getPath(), target.getPath() });
+
 		return success;
 	}
 
-	/**
-	 * Get an Uri from an file path.
-	 *
-	 * @param path The file path.
-	 * @return The Uri.
-	 */
+
 	private static Uri getUriFromFile(Context context, final String path) {
 		ContentResolver resolver = context.getContentResolver();
 
@@ -247,16 +218,11 @@ public class StorageHelper {
 		}
 	}
 
-	/**
-	 * Delete all files in a folder.
-	 *
-	 * @param folder the folder
-	 * @return true if successful.
-	 */
+
 
 	public static boolean deleteFilesInFolder(Context context, @NonNull final File folder) {
 
-		// TODO: 07/05/18 check
+
 		boolean totalSuccess = true;
 
 		String[] children = folder.list();
@@ -278,17 +244,11 @@ public class StorageHelper {
 
 
 
-	/**
-	 * Delete a file. May be even on external SD card.
-	 *
-	 * @param file the file to be deleted.
-	 * @return True if successfully deleted.
-	 */
+
 	public static void deleteFile(Context context, @NonNull final File file) throws ProgressException {
 		ErrorCause error = new ErrorCause(file.getName());
 
-		//W/DocumentFile: Failed getCursor: java.lang.IllegalArgumentException: Failed to determine if A613-F0E1:.android_secure is child of A613-F0E1:: java.io.FileNotFoundException: Missing file for A613-F0E1:.android_secure at /storage/sdcard1/.android_secure
-		// First try the normal deletion.
+
 
 		boolean success = false;
 
@@ -298,14 +258,14 @@ public class StorageHelper {
 			error.addCause(e.getLocalizedMessage());
 		}
 
-		// Try with Storage Access Framework.
+
 		if (!success && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 			DocumentFile document = getDocumentFile(context, file, false, false);
 			success = document != null && document.delete();
 			error.addCause("Failed SAF");
 		}
 
-		// Try the Kitkat workaround.
+
 		if (!success && Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
 			ContentResolver resolver = context.getContentResolver();
 
@@ -352,12 +312,7 @@ public class StorageHelper {
 		return null;
 	}
 
-	/**
-	 * Delete a folder.
-	 *
-	 * @param file The folder name.
-	 * @return true if successful.
-	 */
+
 	public static boolean rmdir(Context context, @NonNull final File file) {
 
 		if(!file.exists() && !file.isDirectory()) return false;
@@ -365,27 +320,27 @@ public class StorageHelper {
 		String[] fileList = file.list();
 
 		if(fileList != null && fileList.length > 0)
-			// Delete only empty folder.
+
 			return false;
 
-		// Try the normal way
+
 		if (file.delete()) return true;
 
 
-		// Try with Storage Access Framework.
+
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 			DocumentFile document = getDocumentFile(context, file, true, true);
 			return document != null && document.delete();
 		}
 
-		// Try the Kitkat workaround.
+
 		if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
 			ContentResolver resolver = context.getContentResolver();
 			ContentValues values = new ContentValues();
 			values.put(MediaStore.MediaColumns.DATA, file.getAbsolutePath());
 			resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
 
-			// Delete the created entry, such that content provider will delete the file.
+
 			resolver.delete(MediaStore.Files.getContentUri("external"), MediaStore.MediaColumns.DATA + "=?",
 							new String[] {file.getAbsolutePath()});
 		}
@@ -393,15 +348,7 @@ public class StorageHelper {
 		return !file.exists();
 	}
 
-	/**
-	 * Get a DocumentFile corresponding to the given file (for writing on ExtSdCard on Android 5). If the file is not
-	 * existing, it is created.
-	 *
-	 * @param file              The file.
-	 * @param isDirectory       flag indicating if the file should be a directory.
-	 * @param createDirectories flag indicating if intermediate path directories should be created if not existing.
-	 * @return The DocumentFile
-	 */
+
 	private static DocumentFile getDocumentFile(Context context, @NonNull final File file, final boolean isDirectory, final boolean createDirectories) {
 
 		Uri treeUri = getTreeUri(context);
@@ -452,12 +399,7 @@ public class StorageHelper {
 		return document;
 	}
 
-	/**
-	 * Get the stored tree URIs.
-	 *
-	 * @return The tree URIs.
-	 * @param context context
-	 */
+
 	private static Uri getTreeUri(Context context) {
 		String uriString = Hawk.get(context.getString(R.string.preference_internal_uri_extsdcard_photos), null);
 
@@ -465,12 +407,7 @@ public class StorageHelper {
 		return Uri.parse(uriString);
 	}
 
-	/**
-	 * Set a shared preference for an Uri.
-	 *
-	 * @param context context
-	 * @param uri          the target value of the preference.
-	 */
+
 	public static void saveSdCardInfo(Context context, @Nullable final Uri uri) {
 		Hawk.put(context.getString(R.string.preference_internal_uri_extsdcard_photos),
 						uri == null ? null : uri.toString());
@@ -484,10 +421,10 @@ public class StorageHelper {
 
 	public static String getMediaPath(final Context context, final Uri uri)
 	{
-		// DocumentProvider
+
 		if (DocumentsContract.isDocumentUri(context, uri)) {
 
-			// ExternalStorageProvider
+
 			if (isExternalStorageDocument(uri)) {
 				final String docId = DocumentsContract.getDocumentId(uri);
 				final String[] split = docId.split(":");
@@ -497,9 +434,9 @@ public class StorageHelper {
 					return Environment.getExternalStorageDirectory() + "/" + split[1];
 				}
 
-				// TODO handle non-primary volumes
+
 			}
-			// DownloadsProvider
+
 			else if (isDownloadsDocument(uri)) {
 				final String id = DocumentsContract.getDocumentId(uri);
 				final Uri contentUri = ContentUris.withAppendedId(
@@ -507,7 +444,7 @@ public class StorageHelper {
 
 				return getDataColumn(context, contentUri, null, null);
 			}
-			// MediaProvider
+
 			else if (isMediaDocument(uri)) {
 				final String docId = DocumentsContract.getDocumentId(uri);
 				final String[] split = docId.split(":");
@@ -538,16 +475,16 @@ public class StorageHelper {
 
 			return getDataColumn(context, contentUri, null, null);
 		}
-		// MediaStore (and general)
+
 		else if ("content".equalsIgnoreCase(uri.getScheme())) {
 			try {
-				//easy way
+
 				String a = getDataColumn(context, uri, null, null);
 				if (a != null) return a;
 			} catch (Exception ignored) { }
 
 
-			// work around for general uri generated by FileProvider.getUriForFile()
+
 			String[] split = uri.getPath().split("/");
 			int z = -1, len = split.length;
 			for (int i = 0; i < len; i++) {
@@ -577,16 +514,7 @@ public class StorageHelper {
 		return null;
 	}
 
-	/**
-	 * Get the value of the data column for this Uri. This is useful for
-	 * MediaStore Uris, and other file-based ContentProviders.
-	 *
-	 * @param context The context.
-	 * @param uri The Uri to getCursor.
-	 * @param selection (Optional) Filter used in the getCursor.
-	 * @param selectionArgs (Optional) Selection arguments used in the getCursor.
-	 * @return The value of the _data column, which is typically a file path.
-	 */
+
 	private static String getDataColumn(Context context, Uri uri, String selection,
 										String[] selectionArgs) {
 
@@ -608,26 +536,17 @@ public class StorageHelper {
 	}
 
 
-	/**
-	 * @param uri The Uri to check.
-	 * @return Whether the Uri authority is ExternalStorageProvider.
-	 */
+
 	private static boolean isExternalStorageDocument(Uri uri) {
 		return "com.android.externalstorage.documents".equals(uri.getAuthority());
 	}
 
-	/**
-	 * @param uri The Uri to check.
-	 * @return Whether the Uri authority is DownloadsProvider.
-	 */
+
 	private static boolean isDownloadsDocument(Uri uri) {
 		return "com.android.providers.downloads.documents".equals(uri.getAuthority());
 	}
 
-	/**
-	 * @param uri The Uri to check.
-	 * @return Whether the Uri authority is MediaProvider.
-	 */
+
 	private static boolean isMediaDocument(Uri uri) {
 		return "com.android.providers.media.documents".equals(uri.getAuthority());
 	}

@@ -3,10 +3,6 @@ package org.horaapps.leafpic.delete;
 import org.horaapps.leafpic.data.Album;
 import org.horaapps.leafpic.util.StringUtils;
 
-/**
- * Created by dnld on 7/2/17.
- */
-
 @Deprecated
 public class Folder {
     int count = -1;

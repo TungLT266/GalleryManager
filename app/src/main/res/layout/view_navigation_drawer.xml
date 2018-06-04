@@ -88,19 +88,19 @@
                 app:itemIcon="@string/icon_tags"
                 app:itemText="@string/tags" />
 
-            <org.horaapps.leafpic.views.navigation_drawer.NavigationEntry
-                android:id="@+id/navigation_item_wallpapers"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:itemIcon="@string/icon_wallpapers"
-                app:itemText="@string/wallpapers" />
+            <!--<org.horaapps.leafpic.views.navigation_drawer.NavigationEntry-->
+                <!--android:id="@+id/navigation_item_wallpapers"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--app:itemIcon="@string/icon_wallpapers"-->
+                <!--app:itemText="@string/wallpapers" />-->
 
-            <org.horaapps.leafpic.views.navigation_drawer.NavigationEntry
-                android:id="@+id/navigation_item_donate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:itemIcon="@string/icon_donate"
-                app:itemText="@string/donate" />
+            <!--<org.horaapps.leafpic.views.navigation_drawer.NavigationEntry-->
+                <!--android:id="@+id/navigation_item_donate"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--app:itemIcon="@string/icon_donate"-->
+                <!--app:itemText="@string/donate" />-->
 
             <org.horaapps.leafpic.views.navigation_drawer.NavigationEntry
                 android:id="@+id/navigation_item_settings"

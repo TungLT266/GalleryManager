@@ -7,11 +7,6 @@ import org.horaapps.leafpic.data.CursorHandler;
 
 import io.reactivex.Observable;
 
-
-/**
- * Created by dnld on 3/13/17.
- */
-
 public class QueryUtils {
 
     public static <T> Observable<T> query(Query q, ContentResolver cr, CursorHandler<T> ch) {
@@ -28,15 +23,7 @@ public class QueryUtils {
         });
     }
 
-    /**
-     * return only the first element if there is one
-     *
-     * @param q
-     * @param cr
-     * @param ch
-     * @param <T>
-     * @return
-     */
+
     public static <T> Observable<T> querySingle(Query q, ContentResolver cr, CursorHandler<T> ch) {
         return Observable.create(subscriber -> {
             Cursor cursor = null;

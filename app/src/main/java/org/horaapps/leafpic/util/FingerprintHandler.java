@@ -1,8 +1,6 @@
 package org.horaapps.leafpic.util;
 
-/**
- * Created by Loris on 9/9/2017.
- */
+
 
 import android.Manifest;
 import android.app.KeyguardManager;
@@ -34,10 +32,6 @@ import javax.crypto.SecretKey;
 
 import static android.content.Context.FINGERPRINT_SERVICE;
 import static android.content.Context.KEYGUARD_SERVICE;
-
-/**
- * Created by francesco on 29/11/16.
- */
 
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
@@ -76,22 +70,22 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     public boolean isFingerprintSupported() {
 
         if (!fingerprintManager.isHardwareDetected()) {
-            //Toast.makeText(context, "Your device doesn't support fingerprint authentication", Toast.LENGTH_SHORT).show();
+
             fingerprintSupported = false;
         }
 
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
-            //Toast.makeText(context, "Please enable the fingerprint permission", Toast.LENGTH_SHORT).show();
+
             fingerprintSupported = false;
         }
 
         if (!fingerprintManager.hasEnrolledFingerprints()) {
-            //Toast.makeText(context, "No fingerprint configured. Please register at least one fingerprint in your device's Settings", Toast.LENGTH_SHORT).show();
+
             fingerprintSupported = false;
         }
 
         if (!keyguardManager.isKeyguardSecure()) {
-            //Toast.makeText(context, "Please enable lockscreen security in your device's Settings", Toast.LENGTH_SHORT).show();
+
             fingerprintSupported = false;
         }
 
